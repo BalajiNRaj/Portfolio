@@ -1,4 +1,4 @@
-import { Theme, ThemePanel } from "@radix-ui/themes";
+import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import "./globals.css";
 import AppBar from "@/components/AppBar";
@@ -13,8 +13,7 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
-}) {
-  return (
+}) {  return (
     <html lang="en">
       <body>
         <Theme
@@ -22,12 +21,11 @@ export default function RootLayout({
           accentColor="blue"
           grayColor="slate"
           radius="large"
-          scaling="95%"
+          scaling="100%"
+          hasBackground
           panelBackground="solid"
-        >
-          <AppBar />
+        ><AppBar />
           {children}
-          {/* <ThemePanel /> */}
         </Theme>
       </body>
     </html>

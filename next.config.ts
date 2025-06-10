@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  experimental: {
+    optimizePackageImports: ['@radix-ui/themes', '@radix-ui/colors']
+  }
 };
 
 export default nextConfig;
