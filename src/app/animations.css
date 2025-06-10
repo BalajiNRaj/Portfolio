@@ -1,0 +1,103 @@
+/* Slide up animation */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  opacity: 0;
+  animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Project card hover effects */
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.15);
+}
+
+.project-image {
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.05);
+}
+
+/* Gradient animation */
+@keyframes gradientFloat {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+.gradient-circle-1 {
+  animation: gradientFloat 15s ease-in-out infinite;
+}
+
+.gradient-circle-2 {
+  animation: gradientFloat 18s ease-in-out infinite reverse;
+}
+
+/* Button hover effects */
+.button-hover {
+  transition: transform 0.2s ease;
+}
+
+.button-hover:hover {
+  transform: translateY(-2px);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-7);
+}
+
+/* Ensure animations respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-slide-up {
+    animation: none;
+    opacity: 1;
+  }
+  
+  .gradient-circle-1,
+  .gradient-circle-2 {
+    animation: none;
+  }
+  
+  .project-card:hover {
+    transform: none;
+  }
+  
+  .project-card:hover .project-image {
+    transform: none;
+  }
+}
