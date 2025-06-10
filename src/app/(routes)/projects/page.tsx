@@ -1,7 +1,34 @@
 import { Box, Container, Heading, Text, Card, Grid, Button, Flex, Link, Badge } from "@radix-ui/themes";
 import { GlobeIcon } from "@radix-ui/react-icons";
 
-export default function ProjectsPage() {  const projects = [
+export default function ProjectsPage() {
+  const projects = [
+    {
+      title: "AI-Powered Answer Agent",
+      description: "OpenAI • RAG • Vector Search • Microsoft Recognition",
+      period: "2023 - Present",
+      details: [
+        "Developed an automated system using RAG and OpenAI's Ada model for intelligent response generation",
+        "Integrated SOLR's Dense Vector Search for enhanced context-aware responses",
+        "Built no-touch feature for automatic file processing and requirement extraction",
+        "Received special recognition from Microsoft for the system's effectiveness"
+      ],
+      technologies: ["OpenAI", "SOLR", "Vector Search", "RAG", "Machine Learning", "Natural Language Processing"],
+      link: "#"
+    },
+    {
+      title: "Agent Studio Platform",
+      description: "AI Agents • Automation • Analytics",
+      period: "2023 - Present",
+      details: [
+        "Architected and developed multiple AI-driven agents for the Agent Studio platform",
+        "Built Dynamic Report Agent for automated, customized reporting",
+        "Implemented Executive Summary Agent for condensed insights",
+        "Created Analysis Agent to support RFP response automation"
+      ],
+      technologies: ["AI/ML", "REST APIs", "Analytics", "Automation", "React"],
+      link: "#"
+    },
     {
       title: "Profile Center (Trust Center)",
       description: "AI • LLMs • Enterprise Integration • Best Team Award",
@@ -14,7 +41,8 @@ export default function ProjectsPage() {  const projects = [
       ],
       technologies: ["Spring Boot", "REST APIs", "OAuth", "AI", "Vector Search", "SOLR", "OpenAI", "Slack", "Microsoft Dynamics", "Salesforce", "GrapeJS"],
       link: "#"
-    },    {
+    },
+    {
       title: "Research & Development",
       description: "Vector Search • RAG • OpenAI • Recommendation Engine",
       period: "2022 - 2023",
@@ -26,7 +54,21 @@ export default function ProjectsPage() {  const projects = [
       ],
       technologies: ["Spring Boot", "REST APIs", "Postman", "SOLR", "OpenAI", "Slack", "Webhooks"],
       link: "#"
-    },    {
+    },
+    {
+      title: "Platform Enhancement & Integration",
+      description: "External APIs • Offline Support • Search Integration",
+      period: "2022 - 2023",
+      details: [
+        "Integrated Google Drive and Bing Search APIs for expanded data access",
+        "Implemented offline functionality for seamless low-connectivity usage",
+        "Enhanced data retrieval capabilities with external source integration",
+        "Optimized performance for large-scale data processing"
+      ],
+      technologies: ["Google Drive API", "Bing Search API", "Offline Storage", "React"],
+      link: "#"
+    },
+    {
       title: "Import Automation",
       description: "ML • Automation • Customer Delight Award",
       period: "2020 - 2021",
@@ -38,7 +80,8 @@ export default function ProjectsPage() {  const projects = [
       ],
       technologies: ["Spring Boot", "REST APIs", "SHA", "Machine Learning"],
       link: "#"
-    },    {
+    },
+    {
       title: "External API Platform",
       description: "API Security • Integration • Authentication",
       period: "2019 - 2020",
@@ -50,7 +93,8 @@ export default function ProjectsPage() {  const projects = [
       ],
       technologies: ["Spring Boot", "REST APIs", "JWT", "Swagger", "Postman"],
       link: "#"
-    },    {
+    },
+    {
       title: "MS Office Add-in",
       description: "PowerPoint Integration • Content Management • VSTO",
       period: "2018 - 2019",
@@ -62,7 +106,8 @@ export default function ProjectsPage() {  const projects = [
       ],
       technologies: ["MS PPT", "VSTO", "XML", "C#"],
       link: "#"
-    },    {
+    },
+    {
       title: "Electronic Signature",
       description: "Document Signing • Integration • PDF Processing",
       period: "2018",
@@ -72,7 +117,8 @@ export default function ProjectsPage() {  const projects = [
         "Developed drag-and-drop interface for signature placement",
         "Created PDF download capability with embedded signatures"
       ],
-      technologies: ["PDF", "Canvas"],      link: "#"
+      technologies: ["PDF", "Canvas"],
+      link: "#"
     },
     {
       title: "Other Notable Contributions",
@@ -89,7 +135,9 @@ export default function ProjectsPage() {  const projects = [
     }
   ];
 
-  return (    <Container size="4" py="9"><Heading size="8" mb="2">Featured Projects</Heading>
+  return (
+    <Container size="4" py="9">
+      <Heading size="8" mb="2">Featured Projects</Heading>
       <Text size="3" color="gray" mb="6" style={{ maxWidth: '800px' }}>
         Enterprise solutions showcasing expertise in AI/ML, automation, and integration. Award-winning projects including Best Team Award and Customer Delight recognition.
       </Text>
@@ -97,7 +145,8 @@ export default function ProjectsPage() {  const projects = [
         {projects.map((project, index) => (
           <Card key={index} size="2" className="project-card">
             <Flex direction="column" gap="4">
-              <Box>                <Flex justify="between" align="start" mb="2">
+              <Box>
+                <Flex justify="between" align="start" mb="2">
                   <Heading size="4" className="gradient-text">{project.title}</Heading>
                   {project.period && <Badge size="1" variant="soft">{project.period}</Badge>}
                 </Flex>
@@ -110,11 +159,11 @@ export default function ProjectsPage() {  const projects = [
                 <Flex direction="column" gap="2">
                   {project.details.map((detail, idx) => (
                     <Flex key={idx} gap="2" align="center">
-                      <Box style={{ 
-                        width: '4px', 
-                        height: '4px', 
-                        borderRadius: '50%', 
-                        background: 'var(--accent-9)' 
+                      <Box style={{
+                        width: '4px',
+                        height: '4px',
+                        borderRadius: '50%',
+                        background: 'var(--accent-9)'
                       }} />
                       <Text as="p" color="gray" size="2">{detail}</Text>
                     </Flex>
