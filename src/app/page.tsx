@@ -1,5 +1,5 @@
 import { Box, Container, Flex, Heading, Text, Grid, Button, Link, Card, Badge } from "@radix-ui/themes";
-import { GitHubLogoIcon, LinkedInLogoIcon, FileTextIcon, GlobeIcon, ArrowRightIcon } from '@radix-ui/react-icons';
+import { ArrowRightIcon } from '@radix-ui/react-icons';
 
 export default function Home() {
   return (
