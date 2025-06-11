@@ -2,8 +2,15 @@
 
 import { Box, Container, Heading, Text, Flex, Grid } from "@radix-ui/themes";
 
+interface Experience {
+  title: string;
+  company: string;
+  period: string;
+  highlights: string[];
+}
+
 export default function ExperiencePage() {
-  const experiences = [
+  const experiences: Experience[] = [
     {
       title: "Technical Lead",
       company: "Responsive (formerly RFPIO), Coimbatore",
@@ -58,127 +65,132 @@ export default function ExperiencePage() {
 
   return (
     <Container size="4" py="9">
-      <Heading size="8" mb="6">Work History</Heading>
-      <Grid gap="0">
-        {experiences.map((exp, index) => (
-          <Box key={index} position="relative">
-            {/* Timeline vertical line */}
-            <Box
+      <Box style={{ position: 'relative', overflow: 'hidden' }}>
+        {/* Experience Watermark */}
+        <Box
+          style={{
+            position: 'fixed',
+            right: '-10%',
+            top: '20%',
+            fontSize: '180px',
+            fontWeight: 800,
+            opacity: 0.03,
+            transform: 'rotate(-90deg)',
+            transformOrigin: 'center',
+            color: 'var(--accent-12)',
+            whiteSpace: 'nowrap',
+            letterSpacing: '0.2em',
+            pointerEvents: 'none',
+            zIndex: 0
+          }}
+        >
+          EXPERIENCE
+        </Box>
+
+        {/* Main Content */}
+        <Box style={{ position: 'relative', zIndex: 1 }}>
+          <Flex direction="column" align="center" mb="8">
+            <Box 
               style={{
-                position: 'absolute',
-                left: '150px',
-                top: 0,
-                bottom: 0,
-                width: '2px',
-                background: 'var(--gray-5)',
-                transform: 'translateX(-50%)',
-                zIndex: 0
+                background: 'var(--accent-9)',
+                padding: '8px 16px',
+                borderRadius: '20px',
+                marginBottom: '16px'
               }}
-            />
-            <Flex gap="6">
-              {/* Date section with dot */}
-              <Box style={{ minWidth: '150px', position: 'relative' }}>
-                <Text 
-                  size="2" 
-                  style={{ 
-                    position: 'sticky', 
-                    top: '20px',
-                    color: 'var(--gray-11)',
-                    fontWeight: 500
-                  }}
-                >
-                  {exp.period}
-                </Text>
-                {/* Timeline dot */}
+            >
+              <Text as="span" style={{ color: 'white' }}>LIFE TIME</Text>
+            </Box>
+            <Heading size="8" mb="2">Experience</Heading>
+            <Text as="p" size="3" color="gray" align="center" style={{ maxWidth: '600px' }}>
+              A journey through my professional growth and achievements in software development
+            </Text>
+          </Flex>
+
+          <Grid gap="0">
+            {experiences.map((exp, index) => (
+              <Box key={index} position="relative">
+                {/* Timeline vertical line */}
                 <Box
                   style={{
                     position: 'absolute',
-                    right: '-6px',
-                    top: '8px',
-                    width: '12px',
-                    height: '12px',
-                    borderRadius: '50%',
-                    backgroundColor: 'var(--accent-9)',
-                    border: '2px solid var(--color-background)',
-                    boxShadow: '0 0 0 4px var(--color-background)',
-                    zIndex: 1
+                    left: '50%',
+                    top: 0,
+                    bottom: 0,
+                    width: '2px',
+                    background: 'var(--accent-6)',
+                    transform: 'translateX(-50%)',
+                    zIndex: 0
                   }}
                 />
-              </Box>
-              {/* Content section */}
-              <Box style={{ flex: 1, paddingBottom: '40px' }}>
-                <Box 
-                  className="experience-card"
-                  style={{ 
-                    background: 'var(--color-background)',
-                    padding: '24px',
-                    borderRadius: '12px',
-                    position: 'relative',
-                    transition: 'all 0.3s ease',
-                    border: '1px solid var(--gray-4)',
-                    boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
-                  }}
+                <Flex 
+                  gap="6" 
+                  direction={index % 2 === 0 ? "row" : "row-reverse"}
+                  style={{ paddingLeft: index % 2 === 0 ? '0' : '50px', paddingRight: index % 2 === 0 ? '50px' : '0' }}
                 >
-                  <Heading 
-                    size="5" 
-                    mb="1"
-                    style={{
-                      color: 'var(--accent-12)',
-                      letterSpacing: '-0.02em'
-                    }}
-                  >
-                    {exp.title}
-                  </Heading>
-                  <Text 
-                    size="3" 
-                    style={{ 
-                      color: 'var(--gray-11)',
-                      marginBottom: '16px',
-                      fontWeight: 500
-                    }}
-                  >
-                    {exp.company}
-                  </Text>
-                  <Flex direction="column" gap="3">
-                    {exp.highlights.map((highlight, i) => (
-                      <Flex key={i} gap="3" align="start">
-                        <Box 
-                          style={{ 
-                            minWidth: '6px',
-                            width: '6px',
-                            height: '6px',
-                            marginTop: '8px',
-                            borderRadius: '50%',
-                            backgroundColor: 'var(--accent-8)',
-                            opacity: 0.8
-                          }} 
-                        />
-                        <Text 
-                          size="2" 
-                          style={{
-                            color: 'var(--gray-11)',
-                            lineHeight: '1.5'
-                          }}
-                        >
-                          {highlight}
-                        </Text>
+                  {/* Date section with emoji */}
+                  <Box style={{ minWidth: '150px', position: 'relative', textAlign: index % 2 === 0 ? 'right' : 'left' }}>
+                    <Text as="p" size="2" style={{ fontWeight: 500 }}>
+                      {exp.period}
+                    </Text>
+                    {/* <Text as="p" size="6">
+                      {exp.emoji}
+                    </Text> */}
+                  </Box>
+
+                  {/* Content section */}
+                  <Box style={{ flex: 1, paddingBottom: '40px' }}>
+                    <Box 
+                      className="experience-card"
+                      style={{ 
+                        background: 'var(--color-background)',
+                        padding: '24px',
+                        borderRadius: '16px',
+                        position: 'relative',
+                        border: '1px solid var(--accent-3)',
+                        boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
+                      }}
+                    >
+                      <Heading size="5" mb="1">
+                        {exp.title}
+                      </Heading>
+                      <Text as="p" size="2" color="gray" mb="4">
+                        {exp.company}
+                      </Text>
+                      <Flex direction="column" gap="3">
+                        {exp.highlights.map((highlight, i) => (
+                          <Flex key={i} gap="3" align="start">
+                            <Box 
+                              style={{ 
+                                minWidth: '4px',
+                                width: '4px',
+                                height: '4px',
+                                marginTop: '8px',
+                                borderRadius: '50%',
+                                background: 'var(--accent-9)',
+                              }} 
+                            />
+                            <Text as="p" size="2" color="gray">
+                              {highlight}
+                            </Text>
+                          </Flex>
+                        ))}
                       </Flex>
-                    ))}
-                  </Flex>
-                </Box>
+                    </Box>
+                  </Box>
+                </Flex>
               </Box>
-            </Flex>
-          </Box>
-        ))}
-      </Grid>
+            ))}
+          </Grid>
+        </Box>
+      </Box>
 
       <style jsx global>{`
         .experience-card {
-          cursor: default;
+          transition: all 0.3s ease;
         }
         .experience-card:hover {
           transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+          box-shadow: 0 8px 30px rgba(0,0,0,0.08);
           border-color: var(--accent-6);
         }
       `}</style>

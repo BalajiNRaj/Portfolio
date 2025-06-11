@@ -3,6 +3,7 @@
 import { Box, Button, Container, Flex, Link } from "@radix-ui/themes";
 import { LinkedInLogoIcon, HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const AppBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -40,14 +41,16 @@ const AppBar = () => {
       }}
     >
       <Container size="4" style={{ height: '100%' }}>
-        <Flex py="3" justify="between" align="center" style={{ height: '100%' }}>
-          <Link 
+        <Flex py="3" justify="between" align="center" style={{ height: '100%' }}>          <Link 
             href="/" 
             weight="bold" 
             size="4"
             className="nav-link"
           >
-            Balaji N
+            <Flex align="center" gap="2">
+              <Image src={"/favicon.png"} alt="Logo" width={32} height={32} />
+              <span>Balaji</span>
+            </Flex>
           </Link>
 
           {/* Desktop Navigation */}
