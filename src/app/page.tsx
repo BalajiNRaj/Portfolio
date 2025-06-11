@@ -220,7 +220,8 @@ export default function Home() {
             </Flex>
           </Card>
         </Container>
-      </Box>      {/* Footer Section */}
+      </Box>
+      {/* Footer Section */}
       <Box style={{ background: 'var(--gray-1)' }} id="contact">
         <Container>
           <Box py="9">
@@ -263,7 +264,7 @@ export default function Home() {
                     </Dialog.Content>
                   </Dialog.Root>
                 </Box>
-              </Box>              
+              </Box>
               <Box>
                 <Image src="/contact-cartoon.png" alt="Contact Illustration" width={400} height={300} style={{ maxWidth: '100%', height: 'auto' }} />
               </Box>
@@ -271,33 +272,33 @@ export default function Home() {
           </Box>
 
           <Grid columns={{ initial: "1", sm: "3" }} gap="6">
-            <Flex align="start" gap="4">
+            <Flex align="center" gap="4">
               <Image src="/phone.svg" alt="Phone Icon" width={40} height={40} />
-              <Box>
+              <Flex direction={'column'} gap="1">
                 <Text size="2" color="gray">Mon-Fri from 8am to 5pm.</Text>
-                <Text size="3" mt="1">+1 850-597-3369</Text>
-              </Box>
+                <Text size="3" mt="1">+91 8667707484</Text>
+              </Flex>
             </Flex>
 
-            <Flex align="start" gap="4">
+            <Flex align="center" gap="4">
               <Image src="/mail.svg" alt="Mail Icon" width={40} height={40} />
-              <Box>
-                <Text size="2" color="gray">Our friendly team is there to help.</Text>
-                <Text size="3" mt="1">ronniechern@dayrep.com</Text>
-              </Box>
+              <Flex direction={'column'} gap="1">
+                <Text size="2" color="gray">I'm there to help you.</Text>
+                <Text size="3" mt="1">balajinraj007@gmail.com</Text>
+              </Flex>
             </Flex>
 
-            <Flex align="start" gap="4">
+            <Flex align="center" gap="4">
               <Image src="/location.svg" alt="Location Icon" width={40} height={40} />
-              <Box>
+              <Flex direction={'column'} gap="1">
                 <Text size="2" color="gray">Come say hello at our office HQ.</Text>
                 <Text size="3" mt="1">2076 DN Avenue Tallahassee, FL 32301</Text>
-              </Box>
+              </Flex>
             </Flex>
           </Grid>
 
           <Box mt="8" pt="8" style={{ borderTop: '1px solid var(--gray-5)' }}>
-            <Flex justify="between" align="center" wrap="wrap" gap="4">
+            {/* <Flex justify="between" align="center" wrap="wrap" gap="4">
               <Text size="2" color="gray">© {new Date().getFullYear()} Balaji Nagarajan. All rights reserved.</Text>
               <Flex gap="4">
                 <Link href="/privacy">
@@ -307,7 +308,7 @@ export default function Home() {
                   <Text size="2" style={{ color: 'var(--gray-11)' }}>Terms of Use</Text>
                 </Link>
               </Flex>
-            </Flex>
+            </Flex> */}
           </Box>
         </Container>
       </Box>
