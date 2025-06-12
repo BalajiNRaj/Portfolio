@@ -51,6 +51,17 @@ body {
   transform: translateY(-1px);
 }
 
+/* Simplified text animations - optimized for performance */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes letterSpacing {
+  from { letter-spacing: 2px; }
+  to { letter-spacing: -1px; }
+}
+
 [data-radix-card] {
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
@@ -107,6 +118,90 @@ body {
 
 .animate-in {
   animation: fadeIn 0.5s ease-out;
+}
+
+/* Skills Section Styles */
+.bg-purple {
+  background-color: var(--purple-9);
+}
+
+.bg-gradient-radial {
+  background-image: radial-gradient(at center, var(--from-color, transparent), var(--to-color, transparent));
+}
+
+.dark\:bg-gradient-radial {
+  --from-color: rgba(153, 79, 245, 0.06);
+  --to-color: rgba(255, 196, 31, 0.06);
+}
+
+.dark\:from-\[\#994FF5\]\/\[6\%\] {
+  --from-color: rgba(153, 79, 245, 0.06);
+}
+
+.dark\:to-\[\#FFC41F\]\/\[6\%\] {
+  --to-color: rgba(255, 196, 31, 0.06);
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+/* Projects Section Styles */
+.projects-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.projects-section::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--blue-4), transparent);
+  top: -150px;
+  right: -150px;
+  opacity: 0.2;
+  z-index: 0;
+}
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
+  border-radius: var(--radius-4);
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+
+.project-card img {
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover img {
+  transform: scale(1.05);
+}
+
+.project-links a {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.project-card:hover .project-links a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tech-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
 }
 
 /* Mobile Navigation */

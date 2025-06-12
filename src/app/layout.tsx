@@ -18,7 +18,7 @@ export default function RootLayout({
       <body>
         <Theme
           appearance="dark"
-          accentColor="blue"
+          accentColor="iris"
           grayColor="slate"
           radius="large"
           scaling="100%"

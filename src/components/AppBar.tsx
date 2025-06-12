@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const AppBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+
   const navItems = [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
@@ -30,7 +30,7 @@ const AppBar = () => {
     <Box
       position="sticky"
       top="0"
-      style={{ 
+      style={{
         backgroundColor: 'var(--color-background)',
         backdropFilter: 'blur(8px)',
         WebkitBackdropFilter: 'blur(8px)',
@@ -41,17 +41,17 @@ const AppBar = () => {
       }}
     >
       <Container size="4" style={{ height: '100%' }}>
-        <Flex py="3" justify="between" align="center" style={{ height: '100%' }}>          <Link 
-            href="/" 
-            weight="bold" 
-            size="4"
-            className="nav-link"
-          >
-            <Flex align="center" gap="2">
-              <Image src={"/favicon.png"} alt="Logo" width={32} height={32} />
-              <span>Balaji</span>
-            </Flex>
-          </Link>
+        <Flex py="3" justify="between" align="center" style={{ height: '100%' }}>          <Link
+          href="/"
+          weight="bold"
+          size="4"
+          className="nav-link"
+        >
+          <Flex align="center" gap="2">
+            <Image src={"/favicon.png"} alt="Logo" width={32} height={32} />
+            <span className="gradient-text">Balaji</span>
+          </Flex>
+        </Link>
 
           {/* Desktop Navigation */}
           <Flex display={{ initial: 'none', sm: 'flex' }} gap="6" align="center">
@@ -66,7 +66,7 @@ const AppBar = () => {
                 {item.label}
               </Link>
             ))}
-            <Button variant="soft" size="2">
+            <Button variant="soft" size="2" onClick={() => window.open('https://www.linkedin.com/in/balaji-n-607416103/', '_blank')}>
               <LinkedInLogoIcon width="16" height="16" />
               Connect
             </Button>
@@ -74,9 +74,9 @@ const AppBar = () => {
 
           {/* Mobile Menu Button */}
           <Box display={{ initial: 'block', sm: 'none' }}>
-            <Button 
-              size="3" 
-              variant="ghost" 
+            <Button
+              size="3"
+              variant="ghost"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="mobile-menu-btn"
             >
@@ -108,7 +108,7 @@ const AppBar = () => {
                 {item.label}
               </Link>
             ))}
-            <Button variant="soft" size="2">
+            <Button variant="soft" size="2" onClick={() => window.open('https://www.linkedin.com/in/balaji-n-607416103/', '_blank')}>
               <LinkedInLogoIcon width="16" height="16" />
               Connect
             </Button>
