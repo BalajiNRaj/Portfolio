@@ -28,6 +28,9 @@ export default function HeroSection() {
     
     // Add mouse move tracking for 3D effect
     const handleMouseMove = (e: MouseEvent) => {
+      // Skip 3D effect calculation on mobile devices for better performance
+      if (window.innerWidth < 768) return;
+      
       if (profileRef.current) {
         const rect = profileRef.current.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
@@ -86,7 +89,9 @@ export default function HeroSection() {
     }
     
     const particlesArray: ParticleInterface[] = [];
-    const particleCount = 30;
+    // Adjust particle count based on screen width for better performance
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile ? 15 : 30;
     
     class Particle {
       x: number;
@@ -161,7 +166,7 @@ export default function HeroSection() {
   
   return (
     <section id="hero-section">
-      <Box style={{ 
+      <Box className="hero-box" style={{ 
         minHeight: '100vh', 
         position: 'relative', 
         overflow: 'hidden', 
@@ -233,16 +238,18 @@ export default function HeroSection() {
           position: 'relative',
           zIndex: 2,
         }}>
-          <Grid columns={{ initial: "1", md: "2" }} gap="9" style={{ paddingTop: '100px' }}>
+          <Grid columns={{ initial: "1", md: "2" }} gap={{ initial: "6", md: "9" }} style={{ 
+            paddingTop: '100px',
+            paddingBottom: '40px',
+          }}>
             <Flex 
-              direction="column" 
-              justify="center"
-              className="content-column"
-              style={{ 
-                opacity: isLoaded ? 1 : 0,
-                transform: isLoaded ? 'translateY(0)' : 'translateY(20px)',
-                transition: 'opacity 0.8s ease, transform 0.8s ease',
-              }}
+              direction="column"                justify="center"
+                className="content-column"
+                style={{ 
+                  opacity: isLoaded ? 1 : 0,
+                  transform: isLoaded ? 'translateY(0)' : 'translateY(20px)',
+                  transition: 'opacity 0.8s ease, transform 0.8s ease',
+                }}
             >
               <Flex align="center" gap="2" style={{ marginBottom: '20px' }}>
                 <Text size="4" style={{ 
@@ -285,8 +292,8 @@ export default function HeroSection() {
                 transform: isLoaded ? 'translateY(0)' : 'translateY(20px)',
                 transition: 'opacity 0.6s ease 0.6s, transform 0.6s ease 0.6s',
               }}>
-                <Heading size={{ initial: "8", sm: "9" }} style={{ 
-                  fontSize: 'clamp(2.5rem, 5vw, 5rem)', 
+                <Heading size={{ initial: "7", sm: "8", md: "9" }} style={{ 
+                  fontSize: 'clamp(2rem, 5vw, 5rem)', 
                   marginBottom: '0.25rem', 
                   color: 'white',
                   letterSpacing: '-1px',
@@ -295,8 +302,8 @@ export default function HeroSection() {
                   Judges a book
                 </Heading>
                 <Flex align="baseline" wrap="wrap">
-                  <Heading size={{ initial: "8", sm: "9" }} style={{ 
-                    fontSize: 'clamp(2.5rem, 5vw, 5rem)', 
+                  <Heading size={{ initial: "7", sm: "8", md: "9" }} style={{ 
+                    fontSize: 'clamp(2rem, 5vw, 5rem)', 
                     color: 'white',
                     letterSpacing: '-1px',
                     lineHeight: '1.1',
@@ -304,10 +311,10 @@ export default function HeroSection() {
                     by its
                   </Heading>
                   <Box style={{ position: 'relative', display: 'inline-block' }}>
-                    <Heading size={{ initial: "8", sm: "9" }} style={{ 
-                      fontSize: 'clamp(2.5rem, 5vw, 5rem)', 
+                    <Heading size={{ initial: "7", sm: "8", md: "9" }} style={{ 
+                      fontSize: 'clamp(2rem, 5vw, 5rem)', 
                       color: '#9747FF', 
-                      marginLeft: '16px',
+                      marginLeft: '8px',
                       letterSpacing: '-1px',
                       lineHeight: '1.1',
                       position: 'relative',
@@ -345,7 +352,7 @@ export default function HeroSection() {
                 Because if the cover doesn't impress you, what else can? I'm a passionate Full-Stack Developer 
                 with expertise in AI/ML and web development, with over 6 years of experience building innovative solutions.
               </Text>
-              <Flex gap="4" wrap="wrap">
+              <Flex gap="4" wrap="wrap" direction={{ initial: "column", sm: "row" }} style={{ width: '100%' }}>
                 <Button 
                   size="4" 
                   variant="solid" 
@@ -393,7 +400,7 @@ export default function HeroSection() {
               </Flex>
               
               {/* Enhanced stats container with interactive elements */}
-              <Box mt="9" style={{ 
+              <Box mt="9" className="stat-container" style={{ 
                 background: 'rgba(255,255,255,0.03)', 
                 padding: '20px', 
                 borderRadius: '16px',
@@ -401,7 +408,7 @@ export default function HeroSection() {
                 border: '1px solid rgba(255,255,255,0.05)',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
               }}>
-                <Flex gap={{ initial: "4", md: "9" }} wrap="wrap" justify="between">
+                <Flex gap={{ initial: "4", md: "9" }} wrap="wrap" justify="between" direction={{ initial: "row", xs: "row" }}>
                   <Box className="stat-item-hover" style={{ 
                     textAlign: 'center',
                     position: 'relative',
@@ -520,7 +527,12 @@ export default function HeroSection() {
             </Flex>
             
             {/* Enhanced profile photo section with 3D effect */}
-            <Box style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <Box className="profile-section" style={{ 
+              position: 'relative', 
+              display: 'flex', 
+              justifyContent: 'center', 
+              alignItems: 'center',
+            }}>
               <Box
                 ref={profileRef}
                 style={{
@@ -682,16 +694,16 @@ export default function HeroSection() {
                 </Box>
                 
                 {/* Enhanced skill badges with interactive hover effects */}
-                <Box style={{
+                <Box className="skill-badges-container" style={{
                   position: 'absolute',
                   bottom: '5%',
                   display: 'flex',
                   justifyContent: 'center',
-                  gap: '10px',
+                  gap: '6px',
                   flexWrap: 'wrap',
                   zIndex: 4,
                   width: '100%',
-                  maxWidth: '400px',
+                  maxWidth: '320px',
                   transform: isLoaded ? 'translateY(0)' : 'translateY(20px)',
                   opacity: isLoaded ? 1 : 0,
                   transition: 'transform 0.5s ease, opacity 0.5s ease',

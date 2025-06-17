@@ -300,6 +300,34 @@ body {
     --content-padding-x: var(--space-3);
     --content-padding-y: var(--space-3);
   }
+
+  .profile-container {
+    width: 300px !important;
+    height: 300px !important;
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+  
+  .gradient-orb-1, .gradient-orb-2 {
+    width: 250px !important;
+    height: 250px !important;
+    opacity: 0.5 !important;
+  }
+  
+  .speech-bubble {
+    top: 0 !important;
+    right: 10px !important;
+    transform: translateY(0) !important;
+  }
+  
+  .skill-badge {
+    padding: 6px 10px !important;
+    font-size: 0.85rem !important;
+  }
+  
+  #hero-section .stat-item-hover {
+    padding: 5px !important;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -411,4 +439,155 @@ body {
 
 .profile-container:hover {
   box-shadow: 0 25px 60px rgba(0,0,0,0.5), 0 0 40px rgba(151, 71, 255, 0.4);
+}
+
+/* Improved responsive stat boxes */
+@media (max-width: 640px) {
+  #hero-section .stat-container {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  #hero-section .stat-item-hover {
+    width: 100% !important;
+    max-width: 200px;
+    margin-bottom: 15px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-container {
+    width: 250px !important;
+    height: 250px !important;
+  }
+  
+  #hero-section .btn-primary,
+  #hero-section .btn-secondary {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  #hero-section .gradient-orb-1,
+  #hero-section .gradient-orb-2 {
+    width: 200px !important;
+    height: 200px !important;
+  }
+}
+
+/* Make profile section responsive */
+@media (max-width: 768px) {
+  .profile-section {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    padding: 0 20px;
+  }
+  
+  #hero-section {
+    padding-bottom: 40px;
+  }
+  
+  #hero-section .content-column {
+    padding: 0 10px;
+  }
+  
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .stat-container > div {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .stat-item-hover {
+    width: 40%;
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-container > div {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .stat-item-hover {
+    width: 80%;
+  }
+  
+  #hero-section h1[data-size="7"],
+  #hero-section h1[data-size="8"],
+  #hero-section h1[data-size="9"] {
+    font-size: clamp(1.8rem, 4vw, 2.5rem) !important;
+  }
+}
+
+/* Responsive skill badges */
+@media (min-width: 640px) {
+  .skill-badges-container {
+    gap: 10px !important;
+    max-width: 400px !important;
+  }
+}
+
+/* Container adjustments for different screen sizes */
+@media (max-width: 1024px) {
+  #hero-section [data-radix-container] {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  #hero-section .particles-container .gradient-orb-1,
+  #hero-section .particles-container .gradient-orb-2 {
+    opacity: 0.3 !important;
+  }
+  
+  .profile-container {
+    border-width: 4px !important;
+  }
+  
+  .speech-bubble {
+    right: 10px !important;
+    max-width: 150px !important;
+  }
+  
+  .speech-bubble > div {
+    padding: 12px 16px !important;
+  }
+}
+
+/* Responsive hero box height */
+@media (max-width: 768px) {
+  .hero-box {
+    min-height: auto !important;
+    padding-top: 80px !important;
+    padding-bottom: 60px !important;
+  }
+}
+
+/* Enhanced responsive container padding */
+@media (max-width: 768px) {
+  #hero-section [data-radix-container] {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  
+  #hero-section .grid {
+    gap: 40px !important;
+  }
+}
+
+/* Better spacing for smaller screens */
+@media (max-width: 480px) {
+  .content-column > * {
+    margin-bottom: 20px !important;
+  }
+  
+  #hero-section .speech-bubble {
+    font-size: 0.85rem !important;
+  }
 }
