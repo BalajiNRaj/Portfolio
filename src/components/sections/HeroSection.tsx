@@ -74,7 +74,18 @@ export default function HeroSection() {
     canvas.width = container.clientWidth;
     canvas.height = container.clientHeight;
     
-    const particlesArray: any[] = [];
+    interface ParticleInterface {
+      x: number;
+      y: number;
+      size: number;
+      speedX: number;
+      speedY: number;
+      color: string;
+      update: () => void;
+      draw: () => void;
+    }
+    
+    const particlesArray: ParticleInterface[] = [];
     const particleCount = 30;
     
     class Particle {
