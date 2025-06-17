@@ -116,6 +116,30 @@ body {
   }
 }
 
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .animate-in {
   animation: fadeIn 0.5s ease-out;
 }
@@ -340,4 +364,51 @@ body {
 [data-radix-card]:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-hover);
+}
+
+/* Hero section interactive elements */
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px rgba(151, 71, 255, 0.4);
+}
+
+.btn-secondary:hover {
+  border-color: rgba(224, 224, 224, 0.6);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.stat-item-hover:hover {
+  transform: translateY(-5px);
+}
+
+.skill-badge:hover {
+  transform: translateY(-3px);
+}
+
+.skill-badge:nth-child(1):hover {
+  background: rgba(151, 71, 255, 0.25);
+  box-shadow: 0 8px 20px rgba(151, 71, 255, 0.3);
+}
+
+.skill-badge:nth-child(2):hover {
+  background: rgba(255, 196, 31, 0.25);
+  box-shadow: 0 8px 20px rgba(255, 196, 31, 0.3);
+}
+
+.skill-badge:nth-child(3):hover {
+  background: rgba(39, 142, 255, 0.25);
+  box-shadow: 0 8px 20px rgba(39, 142, 255, 0.3);
+}
+
+.skill-badge:nth-child(4):hover {
+  background: rgba(98, 237, 152, 0.25);
+  box-shadow: 0 8px 20px rgba(98, 237, 152, 0.3);
+}
+
+.speech-bubble:hover {
+  transform: translateY(-55%) scale(1.05);
+}
+
+.profile-container:hover {
+  box-shadow: 0 25px 60px rgba(0,0,0,0.5), 0 0 40px rgba(151, 71, 255, 0.4);
 }
