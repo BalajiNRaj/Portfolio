@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
+import { ThemeToggle } from "./ThemeToggle";
 
 const MotionFlex = motion(Flex);
 const MotionBox = motion(Box);
@@ -168,7 +169,16 @@ const AppBar = () => {
                 </Link>
               );
             })}
-            <Flex gap="3">
+            <Flex gap="3" align="center">
+              <Box style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '36px',
+                height: '36px',
+              }}>
+                <ThemeToggle />
+              </Box>
               <Button 
                 variant="ghost" 
                 size="2" 
@@ -310,6 +320,15 @@ const AppBar = () => {
                 );
               })}
               <Flex gap="4" mt="3" justify="center">
+                <Box style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '42px',
+                  height: '42px',
+                }}>
+                  <ThemeToggle />
+                </Box>
                 <Button 
                   variant="ghost" 
                   size="3" 

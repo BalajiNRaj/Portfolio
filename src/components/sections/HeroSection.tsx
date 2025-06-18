@@ -184,8 +184,8 @@ export default function HeroSection() {
             position: 'absolute',
             inset: 0,
             fontFamily: 'monospace',
-            color: 'rgba(255, 255, 255, 0.08)',
-            opacity: 0.7,
+            color: 'var(--slate-5)',
+            opacity: 0.2,
             userSelect: 'none',
             zIndex: 1,
             overflow: 'hidden',
@@ -458,7 +458,7 @@ import React from 'react';
                 borderRadius: '16px',
                 backdropFilter: 'blur(10px)',
                 border: '1px solid var(--slate-4)',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
+                boxShadow: '0 10px 30px rgba(0,0,0,0.05)'
               }}>
                 <Flex gap={{ initial: "4", md: "9" }} wrap="wrap" justify="between" direction={{ initial: "row", xs: "row" }}>
                   <Box className="stat-item-hover" style={{ 
@@ -477,11 +477,11 @@ import React from 'react';
                       padding: '2px 8px',
                       borderRadius: '10px',
                       fontSize: '0.7rem',
-                      color: '#9747FF',
+                      color: 'var(--violet-9)',
                       whiteSpace: 'nowrap',
                     }}>Since 2018</Box>
                     <Text size="6" weight="bold" style={{ 
-                      color: '#9747FF',
+                      color: 'var(--violet-9)',
                       position: 'relative',
                       display: 'inline-block'
                     }}>
@@ -496,7 +496,7 @@ import React from 'react';
                         borderRadius: '2px',
                       }}></Box>
                     </Text>
-                    <Text size="2" ml={'2'} style={{ color: '#E0E0E0' }}>Years Experience</Text>
+                    <Text size="2" ml={'2'} style={{ color: 'var(--slate-11)' }}>Years Experience</Text>
                   </Box>
                   
                   <Box className="stat-item-hover" style={{ 
@@ -515,11 +515,11 @@ import React from 'react';
                       padding: '2px 8px',
                       borderRadius: '10px',
                       fontSize: '0.7rem',
-                      color: '#FFC41F',
+                      color: 'var(--amber-9)',
                       whiteSpace: 'nowrap',
                     }}>And Counting</Box>
                     <Text size="6" weight="bold" style={{ 
-                      color: '#FFC41F',
+                      color: 'var(--amber-9)',
                       position: 'relative',
                       display: 'inline-block'
                     }}>
@@ -534,7 +534,7 @@ import React from 'react';
                         borderRadius: '2px',
                       }}></Box>
                     </Text>
-                    <Text size="2" ml={'2'} style={{ color: '#E0E0E0' }}>Client Projects</Text>
+                    <Text size="2" ml={'2'} style={{ color: 'var(--slate-11)' }}>Client Projects</Text>
                   </Box>
                   
                   <Box className="stat-item-hover" style={{ 
@@ -553,11 +553,11 @@ import React from 'react';
                       padding: '2px 8px',
                       borderRadius: '10px',
                       fontSize: '0.7rem',
-                      color: '#62ED98',
+                      color: 'var(--green-9)',
                       whiteSpace: 'nowrap',
                     }}>Specialized</Box>
                     <Text size="6" weight="bold" style={{ 
-                      color: '#62ED98',
+                      color: 'var(--green-9)',
                       position: 'relative',
                       display: 'inline-block'
                     }}>
@@ -572,7 +572,7 @@ import React from 'react';
                         borderRadius: '2px',
                       }}></Box>
                     </Text>
-                    <Text size="2" ml={'2'} style={{ color: '#E0E0E0' }}>AI/ML Solutions</Text>
+                    <Text size="2" ml={'2'} style={{ color: 'var(--slate-11)' }}>AI/ML Solutions</Text>
                   </Box>
                 </Flex>
               </Box>
@@ -711,20 +711,20 @@ import React from 'react';
                   transition: 'transform 0.2s ease',
                 }}>
                   <Box style={{
-                    background: 'rgba(255,255,255,0.08)',
+                    background: 'var(--slate-3)',
                     backdropFilter: 'blur(12px)',
                     borderRadius: '18px',
                     padding: '16px 20px',
-                    boxShadow: '0 10px 30px rgba(0,0,0,0.15), inset 0 0 0 1px rgba(255,255,255,0.15)',
-                    color: 'white',
+                    boxShadow: '0 10px 30px rgba(0,0,0,0.1), inset 0 0 0 1px var(--slate-5)',
+                    color: 'var(--slate-12)',
                     position: 'relative',
                     maxWidth: '200px',
                     transform: isLoaded ? 'scale(1)' : 'scale(0.8)',
                     opacity: isLoaded ? 1 : 0,
                     transition: 'transform 0.5s ease, opacity 0.5s ease',
                   }}>
-                    <Text size="2" style={{ fontWeight: '600', color: 'rgba(255,255,255,0.95)' }}>
-                      Let's build something <span style={{ color: '#9747FF' }}>amazing</span> together!
+                    <Text size="2" style={{ fontWeight: '600', color: 'var(--slate-12)' }}>
+                      Let's build something <span style={{ color: 'var(--blue-9)' }}>amazing</span> together!
                     </Text>
                     <Box style={{
                       position: 'absolute',
@@ -732,11 +732,11 @@ import React from 'react';
                       left: '25%',
                       width: '20px',
                       height: '20px',
-                      background: 'rgba(255,255,255,0.08)',
+                      background: 'var(--slate-3)',
                       transform: 'rotate(45deg)',
                       boxShadow: '5px 5px 15px rgba(0,0,0,0.08)',
-                      borderRight: '1px solid rgba(255,255,255,0.15)',
-                      borderBottom: '1px solid rgba(255,255,255,0.15)',
+                      borderRight: '1px solid var(--slate-5)',
+                      borderBottom: '1px solid var(--slate-5)',
                       backdropFilter: 'blur(12px)',
                     }}></Box>
                   </Box>
@@ -758,7 +758,7 @@ import React from 'react';
                 }}>
                   <Badge className="skill-badge" size="2" style={{ 
                     background: 'rgba(151, 71, 255, 0.15)', 
-                    color: 'white', 
+                    color: 'var(--slate-12)', 
                     backdropFilter: 'blur(12px)',
                     border: '1px solid rgba(151, 71, 255, 0.3)',
                     boxShadow: '0 5px 15px rgba(151, 71, 255, 0.2)',
@@ -769,7 +769,7 @@ import React from 'react';
                   
                   <Badge className="skill-badge" size="2" style={{ 
                     background: 'rgba(255, 196, 31, 0.15)', 
-                    color: 'white',
+                    color: 'var(--slate-12)',
                     backdropFilter: 'blur(12px)',
                     border: '1px solid rgba(255, 196, 31, 0.3)',
                     boxShadow: '0 5px 15px rgba(255, 196, 31, 0.2)',
@@ -780,7 +780,7 @@ import React from 'react';
                   
                   <Badge className="skill-badge" size="2" style={{ 
                     background: 'rgba(39, 142, 255, 0.15)', 
-                    color: 'white',
+                    color: 'var(--slate-12)',
                     backdropFilter: 'blur(12px)',
                     border: '1px solid rgba(39, 142, 255, 0.3)',
                     boxShadow: '0 5px 15px rgba(39, 142, 255, 0.2)',
@@ -791,7 +791,7 @@ import React from 'react';
                   
                   <Badge className="skill-badge" size="2" style={{ 
                     background: 'rgba(98, 237, 152, 0.15)', 
-                    color: 'white',
+                    color: 'var(--slate-12)',
                     backdropFilter: 'blur(12px)',
                     border: '1px solid rgba(98, 237, 152, 0.3)',
                     boxShadow: '0 5px 15px rgba(98, 237, 152, 0.2)',

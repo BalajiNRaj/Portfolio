@@ -88,7 +88,7 @@ export default function SkillsSection() {
         height: '50%',
         left: 0,
         bottom: 0,
-        background: 'var(--blue-2)',
+        background: 'var(--slate-3)',
         opacity: 0.3,
         filter: 'blur(120px)',
         zIndex: 0,
@@ -132,13 +132,13 @@ export default function SkillsSection() {
           
           <MotionText
             size="3"
-            color="gray"
-            variants={fadeIn}
             style={{ 
               maxWidth: '650px',
               textAlign: 'center',
               lineHeight: 1.6,
+              color: 'var(--slate-11)'
             }}
+            variants={fadeIn}
           >
             I specialize in Java enterprise development, modern frontend solutions with React, 
             and cutting-edge AI technologies including LLMs and RAG architecture to deliver 
@@ -201,14 +201,14 @@ export default function SkillsSection() {
             <MotionBox
               variants={fadeIn}
               style={{
-                background: 'var(--slate-2)',
+                background: 'var(--card-background)',
                 borderRadius: '16px',
                 border: '1px solid var(--slate-4)',
                 padding: '40px',
                 height: 'fit-content',
               }}
               whileHover={{
-                boxShadow: '0 15px 30px rgba(0, 0, 0, 0.1)',
+                boxShadow: 'var(--shadow-hover)',
                 borderColor: 'var(--blue-6)',
                 y: -5,
               }}
@@ -222,21 +222,21 @@ export default function SkillsSection() {
               <Flex direction="column" gap="5">
                 <Box>
                   <Text size="3" weight="medium" style={{ color: 'var(--blue-9)' }}>6+ Years</Text>
-                  <Text size="2" color="gray">Enterprise Java Development</Text>
+                  <Text size="2" style={{ color: 'var(--slate-11)' }}>Enterprise Java Development</Text>
                 </Box>
                 
                 <Box style={{ height: '1px', background: 'var(--slate-4)' }} />
                 
                 <Box>
                   <Text size="3" weight="medium" style={{ color: 'var(--blue-9)' }}>4+ Years</Text>
-                  <Text size="2" color="gray">AI & LLM Implementation</Text>
+                  <Text size="2" style={{ color: 'var(--slate-11)' }}>AI & LLM Implementation</Text>
                 </Box>
                 
                 <Box style={{ height: '1px', background: 'var(--slate-4)' }} />
                 
                 <Box>
                   <Text size="3" weight="medium" style={{ color: 'var(--blue-9)' }}>15+ Projects</Text>
-                  <Text size="2" color="gray">Successful RAG & AI Solutions</Text>
+                  <Text size="2" style={{ color: 'var(--slate-11)' }}>Successful RAG & AI Solutions</Text>
                 </Box>
               </Flex>
             </MotionBox>
@@ -265,13 +265,13 @@ export default function SkillsSection() {
                 variants={fadeIn}
                 style={{
                   border: '1px solid var(--slate-4)',
-                  background: 'var(--slate-1)',
+                  background: 'var(--card-background)', /* Using a more theme-appropriate variable */
                   padding: '32px',
                   borderRadius: '12px',
                 }}
                 whileHover={{
                   y: -5,
-                  boxShadow: '0 15px 30px rgba(0, 0, 0, 0.1)',
+                  boxShadow: 'var(--shadow-hover)',
                   borderColor: 'var(--blue-6)',
                 }}
                 transition={{ duration: 0.3 }}
@@ -281,7 +281,7 @@ export default function SkillsSection() {
                     width: '48px',
                     height: '48px',
                     borderRadius: '12px',
-                    background: 'var(--blue-3)',
+                    background: 'var(--blue-4)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -296,7 +296,7 @@ export default function SkillsSection() {
                   {skill.name}
                 </Heading>
                 
-                <Text size="2" color="gray" style={{ lineHeight: 1.6 }}>
+                <Text size="2" style={{ lineHeight: 1.6, color: 'var(--slate-11)' }}>
                   {skill.description}
                 </Text>
               </MotionCard>

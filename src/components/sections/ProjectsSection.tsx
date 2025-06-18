@@ -89,7 +89,7 @@ export default function ProjectsSection() {
         height: '50%',
         right: 0,
         top: 0,
-        background: 'var(--blue-2)',
+        background: 'var(--slate-3)',
         opacity: 0.3,
         filter: 'blur(120px)',
         zIndex: 0,
@@ -204,7 +204,7 @@ export default function ProjectsSection() {
                     {project.title}
                   </Heading>
                   
-                  <Text as="p" size="2" color="gray" style={{ marginBottom: '24px', lineHeight: 1.6 }}>
+                  <Text as="p" size="2" style={{ marginBottom: '24px', lineHeight: 1.6, color: 'var(--slate-11)' }}>
                     {project.description}
                   </Text>
                   

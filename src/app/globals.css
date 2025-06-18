@@ -7,6 +7,7 @@
   padding: 0;
 }
 
+/* Theme system - Light theme (default) */
 :root {
   /* Layout */
   --max-width: 1200px;
@@ -33,6 +34,63 @@
   --blue-6-rgb: 28, 100, 242;
 }
 
+/* Light theme */
+[data-theme="light"] {
+  --slate-1: #fcfcfd;
+  --slate-2: #f9f9fb;
+  --slate-3: #f1f1f5;
+  --slate-4: #e8e8ef;
+  --slate-5: #e1e1e9;
+  --slate-6: #d9d9e3;
+  --slate-7: #adadc0;
+  --slate-8: #8c8ca3;
+  --slate-9: #5f5f72;
+  --slate-10: #53535f;
+  --slate-11: #3b3b43;
+  --slate-12: #121215;
+
+  /* Background colors */
+  --color-background: var(--slate-1);
+  --color-text: var(--slate-12);
+  --color-border: var(--slate-4);
+  --color-muted: var(--slate-9);
+  --card-background: var(--slate-2);
+  
+  /* Theme-specific shadows */
+  --shadow-blur: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --slate-1: #151718;
+  --slate-2: #1a1d1e;
+  --slate-3: #202425;
+  --slate-4: #26292b;
+  --slate-5: #2b2f31;
+  --slate-6: #313538;
+  --slate-7: #3a3f42;
+  --slate-8: #4c5155;
+  --slate-9: #697177;
+  --slate-10: #787f85;
+  --slate-11: #9ba1a6;
+  --slate-12: #ecedee;
+
+  /* Background colors */
+  --color-background: var(--slate-1);
+  --color-text: var(--slate-12);
+  --color-border: var(--slate-6);
+  --color-muted: var(--slate-9);
+  --card-background: var(--slate-3);
+  
+  /* Theme-specific shadows */
+  --shadow-blur: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.2);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Global styles */
 html,
 body {
   height: 100%;
@@ -43,6 +101,12 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Color theme transition for all elements */
+*, *::before, *::after {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Radix UI Component Styles */
@@ -392,6 +456,15 @@ body {
 /* Card hover effects */
 [data-radix-card] {
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Theme dropdown hover styles */
+.theme-dropdown-item {
+  transition: background-color 0.2s ease;
+}
+
+.theme-dropdown-item:hover {
+  background-color: var(--slate-3) !important;
 }
 
 [data-radix-card]:hover {

@@ -48,7 +48,7 @@ export default function FooterSection() {
         height: '40%',
         left: 0,
         bottom: 0,
-        background: 'var(--blue-2)',
+        background: 'var(--slate-3)',
         opacity: 0.3,
         filter: 'blur(120px)',
         zIndex: 0,
