@@ -108,10 +108,10 @@ export default function HeroSection() {
         this.speedX = Math.random() * 0.5 - 0.25;
         this.speedY = Math.random() * 0.5 - 0.25;
         
-        // Vary between purple and amber shades
+        // Vary between blue shades
         const hue = Math.random() > 0.5 ? 
-          Math.floor(Math.random() * 30 + 40) :  // Amber range
-          Math.floor(Math.random() * 40 + 270);  // Purple range
+          Math.floor(Math.random() * 30 + 200) :  // Light blue range
+          Math.floor(Math.random() * 40 + 220);  // Blue range
         
         this.color = `hsla(${hue}, 80%, 70%, ${Math.random() * 0.3 + 0.1})`;
       }
@@ -170,7 +170,7 @@ export default function HeroSection() {
         minHeight: '100vh', 
         position: 'relative', 
         overflow: 'hidden', 
-        background: 'linear-gradient(135deg, #1F1D2B 0%, #14121D 100%)',
+        background: 'var(--slate-1)',
       }}>
         {/* Background elements */}
         <Box className="particles-container" style={{
@@ -266,7 +266,7 @@ import React from 'react';
             left: 0,
             width: '100%',
             height: '100%',
-            background: 'radial-gradient(circle at center, transparent 30%, #14121D 90%)',
+            background: 'radial-gradient(circle at center, transparent 30%, var(--slate-2) 90%)',
             opacity: 0.7,
           }}></Box>
           
@@ -283,7 +283,7 @@ import React from 'react';
           <Box style={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(135deg, transparent 0%, rgba(151, 71, 255, 0.05) 50%, transparent 100%)',
+            background: 'linear-gradient(135deg, transparent 0%, rgba(var(--blue-6-rgb), 0.05) 50%, transparent 100%)',
             opacity: 0.4,
           }}></Box>
         </Box>
@@ -306,13 +306,13 @@ import React from 'react';
             >
               <Flex align="center" gap="2" style={{ marginBottom: '20px' }}>
                 <Text size="4" style={{ 
-                  color: 'white',
+                  color: 'var(--slate-12)',
                   opacity: isLoaded ? 1 : 0,
                   transform: isLoaded ? 'translateY(0)' : 'translateY(20px)',
                   transition: 'opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s',
                 }}>Hello! I Am</Text>
                 <Text size="4" style={{ 
-                  color: '#9747FF', 
+                  color: 'var(--blue-9)', 
                   fontWeight: 'bold',
                   position: 'relative',
                   display: 'inline-block',
@@ -324,7 +324,7 @@ import React from 'react';
                   <Box style={{
                     position: 'absolute',
                     inset: 0,
-                    background: 'rgba(151, 71, 255, 0.1)',
+                    background: 'var(--blue-3)',
                     borderRadius: '4px',
                     transform: 'skew(-10deg)',
                   }} />
@@ -337,7 +337,7 @@ import React from 'react';
                 transform: isLoaded ? 'translateY(0)' : 'translateY(20px)',
                 transition: 'opacity 0.6s ease 0.5s, transform 0.6s ease 0.5s',
               }}>
-                <Text size="3" style={{ color: '#E0E0E0' }}>A Developer who</Text>
+                <Text size="3" style={{ color: 'var(--slate-11)' }}>A Developer who</Text>
               </Box>
               
               <Box style={{
@@ -348,7 +348,7 @@ import React from 'react';
                 <Heading size={{ initial: "7", sm: "8", md: "9" }} style={{ 
                   fontSize: 'clamp(2rem, 5vw, 5rem)', 
                   marginBottom: '0.25rem', 
-                  color: 'white',
+                  color: 'var(--slate-12)',
                   letterSpacing: '-1px',
                   lineHeight: '1.1',
                 }}>
@@ -357,7 +357,7 @@ import React from 'react';
                 <Flex align="baseline" wrap="wrap">
                   <Heading size={{ initial: "7", sm: "8", md: "9" }} style={{ 
                     fontSize: 'clamp(2rem, 5vw, 5rem)', 
-                    color: 'white',
+                    color: 'var(--slate-12)',
                     letterSpacing: '-1px',
                     lineHeight: '1.1',
                   }}>
@@ -366,7 +366,7 @@ import React from 'react';
                   <Box style={{ position: 'relative', display: 'inline-block' }}>
                     <Heading size={{ initial: "7", sm: "8", md: "9" }} style={{ 
                       fontSize: 'clamp(2rem, 5vw, 5rem)', 
-                      color: '#9747FF', 
+                      color: 'var(--blue-9)', 
                       marginLeft: '8px',
                       letterSpacing: '-1px',
                       lineHeight: '1.1',
@@ -382,7 +382,7 @@ import React from 'react';
                       width: '90%', 
                       height: '4px', 
                       borderRadius: '2px', 
-                      backgroundColor: '#9747FF',
+                      backgroundColor: 'var(--blue-9)',
                     }}></Box>
                   </Box>
                 </Flex>
@@ -395,7 +395,7 @@ import React from 'react';
                   lineHeight: '1.8', 
                   marginTop: '16px', 
                   marginBottom: '28px',
-                  color: 'rgba(224, 224, 224, 0.9)',
+                  color: 'var(--slate-11)',
                   opacity: isLoaded ? 1 : 0,
                   transform: isLoaded ? 'translateY(0)' : 'translateY(20px)',
                   transition: 'opacity 0.6s ease 0.8s, transform 0.6s ease 0.8s',
@@ -409,9 +409,9 @@ import React from 'react';
                   size="4" 
                   variant="solid" 
                   style={{ 
-                    background: 'linear-gradient(135deg, #9747FF 0%, #8035e7 100%)', 
+                    background: 'var(--blue-9)', 
                     color: 'white',
-                    boxShadow: '0 8px 16px rgba(151, 71, 255, 0.3)',
+                    boxShadow: '0 8px 16px rgba(var(--blue-6-rgb), 0.3)',
                     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                   }} 
                   className="btn-primary"
@@ -431,9 +431,9 @@ import React from 'react';
                   size="4" 
                   variant="outline" 
                   style={{ 
-                    borderColor: 'rgba(224, 224, 224, 0.3)', 
-                    color: '#E0E0E0',
-                    background: 'rgba(255, 255, 255, 0.05)',
+                    borderColor: 'var(--slate-6)', 
+                    color: 'var(--slate-12)',
+                    background: 'rgba(var(--slate-1-rgb), 0.05)',
                     backdropFilter: 'blur(8px)',
                     transition: 'all 0.3s ease',
                   }}
@@ -453,11 +453,11 @@ import React from 'react';
               
               {/* Enhanced stats container with interactive elements */}
               <Box mt="9" className="stat-container" style={{ 
-                background: 'rgba(255,255,255,0.03)', 
+                background: 'var(--slate-2)', 
                 padding: '20px', 
                 borderRadius: '16px',
                 backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255,255,255,0.05)',
+                border: '1px solid var(--slate-4)',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
               }}>
                 <Flex gap={{ initial: "4", md: "9" }} wrap="wrap" justify="between" direction={{ initial: "row", xs: "row" }}>
@@ -604,7 +604,7 @@ import React from 'react';
                   width: '420px',
                   height: '420px',
                   borderRadius: '50%',
-                  background: 'radial-gradient(circle, rgba(151, 71, 255, 0.6) 0%, rgba(151, 71, 255, 0) 70%)',
+                  background: 'radial-gradient(circle, var(--blue-6) 0%, transparent 70%)',
                   filter: 'blur(30px)',
                   zIndex: 0,
                   transform: `translateX(${mousePosition.x * 0.5}px) translateY(${mousePosition.y * 0.5}px)`,
@@ -616,7 +616,7 @@ import React from 'react';
                   width: '320px',
                   height: '320px',
                   borderRadius: '50%',
-                  background: 'radial-gradient(circle, rgba(255, 196, 31, 0.4) 0%, rgba(255, 196, 31, 0) 70%)',
+                  background: 'radial-gradient(circle, var(--blue-8) 0%, transparent 70%)',
                   filter: 'blur(40px)',
                   zIndex: 0,
                   animation: 'pulse 8s ease-in-out infinite 1s',
@@ -641,8 +641,8 @@ import React from 'react';
                   height: '380px',
                   borderRadius: '50%',
                   overflow: 'hidden',
-                  boxShadow: '0 20px 50px rgba(0,0,0,0.4), 0 0 30px rgba(151, 71, 255, 0.3)',
-                  border: '6px solid rgba(151, 71, 255, 0.2)',
+                  boxShadow: '0 20px 50px rgba(0,0,0,0.4), 0 0 30px var(--blue-5)',
+                  border: '6px solid var(--blue-4)',
                   transform: `translateX(${mousePosition.x * 0.2}px) translateY(${mousePosition.y * 0.2}px)`,
                 }}>
                   {/* Background gradient for photo */}
