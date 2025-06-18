@@ -18,14 +18,17 @@ export default function RootLayout({
       <body>
         <Theme
           appearance="dark"
-          accentColor="iris"
+          accentColor="blue"
           grayColor="slate"
-          radius="large"
-          scaling="100%"
-          hasBackground
-          panelBackground="solid"
-        ><AppBar />
-          {children}
+          radius="medium"
+          scaling="95%"
+        >
+          <div className="min-h-screen bg-background text-text">
+            <AppBar />
+            <main className="container mx-auto px-4 py-8">
+              {children}
+            </main>
+          </div>
         </Theme>
       </body>
     </html>

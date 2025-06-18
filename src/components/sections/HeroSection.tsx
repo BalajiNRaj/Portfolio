@@ -179,32 +179,85 @@ export default function HeroSection() {
           overflow: 'hidden',
           opacity: 0.6,
         }}>
-          {/* Animated gradient orbs */}
-          <Box className="gradient-orb-1 parallax-element" data-speed="0.08" style={{
+          {/* Code snippet background elements similar to example image */}
+          <Box className="code-snippets-overlay" style={{
             position: 'absolute',
-            top: '5%',
-            right: '15%',
-            width: '350px',
-            height: '350px',
-            borderRadius: '50%',
-            background: 'radial-gradient(circle at center, rgba(151, 71, 255, 0.3) 0%, rgba(255, 196, 31, 0.1) 50%, transparent 70%)',
-            filter: 'blur(40px)',
-            opacity: 0.6,
-            animation: 'pulse 8s ease-in-out infinite',
-          }}></Box>
-          
-          <Box className="gradient-orb-2 parallax-element" data-speed="0.05" style={{
-            position: 'absolute',
-            bottom: '10%',
-            left: '5%',
-            width: '250px',
-            height: '250px',
-            borderRadius: '50%',
-            background: 'radial-gradient(circle at center, rgba(255, 196, 31, 0.2) 0%, rgba(151, 71, 255, 0.1) 60%, transparent 80%)',
-            filter: 'blur(30px)',
-            opacity: 0.4,
-            animation: 'pulse 10s ease-in-out infinite 2s',
-          }}></Box>
+            inset: 0,
+            fontFamily: 'monospace',
+            color: 'rgba(255, 255, 255, 0.08)',
+            opacity: 0.7,
+            userSelect: 'none',
+            zIndex: 1,
+            overflow: 'hidden',
+          }}>
+            <Box style={{
+              position: 'absolute',
+              right: '-5%',
+              top: '10%',
+              fontSize: 'clamp(0.7rem, 1vw, 0.9rem)',
+              opacity: 0.5,
+              textAlign: 'left',
+              transform: 'rotate(-3deg)',
+            }}>
+              <pre>
+                {`console.log("Hello World");
+<html>
+  <head>
+    <title>Portfolio</title>
+  </head>
+</html>
+            `}
+              </pre>
+            </Box>
+            
+            <Box style={{
+              position: 'absolute',
+              right: '10%',
+              top: '40%',
+              fontSize: 'clamp(0.7rem, 1vw, 0.9rem)',
+              opacity: 0.3,
+            }}>
+              <pre>
+                {`$ npm install
+$ yarn build
+import React from 'react';
+            `}
+              </pre>
+            </Box>
+            
+            <Box style={{
+              position: 'absolute',
+              right: '20%',
+              top: '60%',
+              fontSize: 'clamp(0.7rem, 1vw, 0.9rem)',
+              opacity: 0.4,
+            }}>
+              <pre>
+                {`function App() {
+  const [state, setState] = useState();
+  return <div>Hello</div>;
+}`}
+              </pre>
+            </Box>
+            
+            <Box style={{
+              position: 'absolute',
+              right: '5%',
+              bottom: '10%',
+              fontSize: 'clamp(0.7rem, 1vw, 0.9rem)',
+              opacity: 0.3,
+            }}>
+              <pre>
+                {`<Grid>
+  <html>
+    <body>
+      <div className="container">
+    </body>
+  </html>
+</Grid>`}
+              </pre>
+            </Box>
+          </Box>
           
           {/* Dark corners vignette */}
           <Box style={{
@@ -330,7 +383,6 @@ export default function HeroSection() {
                       height: '4px', 
                       borderRadius: '2px', 
                       backgroundColor: '#9747FF',
-                      animation: 'pulse 3s ease-in-out infinite',
                     }}></Box>
                   </Box>
                 </Flex>
@@ -444,7 +496,7 @@ export default function HeroSection() {
                         borderRadius: '2px',
                       }}></Box>
                     </Text>
-                    <Text size="2" style={{ color: '#E0E0E0' }}>Years Experience</Text>
+                    <Text size="2" ml={'2'} style={{ color: '#E0E0E0' }}>Years Experience</Text>
                   </Box>
                   
                   <Box className="stat-item-hover" style={{ 
@@ -482,7 +534,7 @@ export default function HeroSection() {
                         borderRadius: '2px',
                       }}></Box>
                     </Text>
-                    <Text size="2" style={{ color: '#E0E0E0' }}>Client Projects</Text>
+                    <Text size="2" ml={'2'} style={{ color: '#E0E0E0' }}>Client Projects</Text>
                   </Box>
                   
                   <Box className="stat-item-hover" style={{ 
@@ -520,7 +572,7 @@ export default function HeroSection() {
                         borderRadius: '2px',
                       }}></Box>
                     </Text>
-                    <Text size="2" style={{ color: '#E0E0E0' }}>AI/ML Solutions</Text>
+                    <Text size="2" ml={'2'} style={{ color: '#E0E0E0' }}>AI/ML Solutions</Text>
                   </Box>
                 </Flex>
               </Box>
@@ -555,7 +607,6 @@ export default function HeroSection() {
                   background: 'radial-gradient(circle, rgba(151, 71, 255, 0.6) 0%, rgba(151, 71, 255, 0) 70%)',
                   filter: 'blur(30px)',
                   zIndex: 0,
-                  animation: 'pulse 6s ease-in-out infinite',
                   transform: `translateX(${mousePosition.x * 0.5}px) translateY(${mousePosition.y * 0.5}px)`,
                 }}></Box>
                 
@@ -586,7 +637,6 @@ export default function HeroSection() {
                 <Box className="profile-container" style={{
                   position: 'relative',
                   zIndex: 1,
-                  animation: 'float 4s ease-in-out infinite',
                   width: '380px',
                   height: '380px',
                   borderRadius: '50%',
@@ -657,7 +707,6 @@ export default function HeroSection() {
                   zIndex: 5,
                   display: 'flex',
                   alignItems: 'center',
-                  animation: 'float 4s ease-in-out infinite 1s',
                   transform: 'translateY(-50%)',
                   transition: 'transform 0.2s ease',
                 }}>
@@ -703,7 +752,6 @@ export default function HeroSection() {
                   flexWrap: 'wrap',
                   zIndex: 4,
                   width: '100%',
-                  maxWidth: '320px',
                   transform: isLoaded ? 'translateY(0)' : 'translateY(20px)',
                   opacity: isLoaded ? 1 : 0,
                   transition: 'transform 0.5s ease, opacity 0.5s ease',
@@ -750,7 +798,7 @@ export default function HeroSection() {
                     padding: '8px 14px',
                     transition: 'all 0.3s ease',
                     cursor: 'pointer',
-                  }}>Node.js</Badge>
+                  }}>NextJS</Badge>
                 </Box>
               </Box>
             </Box>
