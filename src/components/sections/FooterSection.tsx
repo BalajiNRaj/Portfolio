@@ -75,8 +75,8 @@ export default function FooterSection() {
             <Flex align="center" gap="4">
               <Image src="/location.svg" alt="Location Icon" width={40} height={40} />
               <Flex direction={'column'} gap="1">
-                <Text size="2" color="gray">Come say hello at our office HQ.</Text>
-                <Text size="3" mt="1">2076 DN Avenue Tallahassee, FL 32301</Text>
+                <Text size="2" color="gray">Let's Meet.</Text>
+                <Text size="3" mt="1">Coimbatore, TN</Text>
               </Flex>
             </Flex>
           </Grid>

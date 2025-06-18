@@ -1,297 +1,311 @@
 'use client';
 
-import { Box, Container, Flex, Heading, Text, Grid, Button, Link, Card, Badge, Inset } from "@radix-ui/themes";
-import { ArrowRightIcon, GitHubLogoIcon } from '@radix-ui/react-icons';
+import { Box, Container, Flex, Heading, Text, Grid, Button, Link, Card, Badge } from "@radix-ui/themes";
+import { ArrowRightIcon, GitHubLogoIcon, ExternalLinkIcon } from '@radix-ui/react-icons';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+
+// Motion components
+const MotionBox = motion(Box);
+const MotionHeading = motion(Heading);
+const MotionText = motion(Text);
+const MotionFlex = motion(Flex);
+const MotionCard = motion(Card);
+
+interface Project {
+  title: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+  technologies: string[];
+  githubUrl: string;
+  demoUrl: string;
+}
 
 export default function ProjectsSection() {
+  // Project data
+  const projects: Project[] = [
+    {
+      title: "AI-Powered Answer Agent",
+      description: "Automated system using RAG and OpenAI's Ada model for intelligent response generation with Microsoft recognition.",
+      image: "/phone.svg",
+      imageAlt: "AI-Powered Answer Agent",
+      technologies: ["OpenAI", "SOLR", "RAG", "ML"],
+      githubUrl: "https://github.com/username/project1",
+      demoUrl: "https://project1-demo.com"
+    },
+    {
+      title: "Profile Center (Trust Center)",
+      description: "AI-powered security profiles with anonymous viewer tracking, Salesforce/Slack integration, and ChatGPT features.",
+      image: "/phone.svg",
+      imageAlt: "Profile Center (Trust Center)",
+      technologies: ["OpenAI", "Spring Boot", "Slack", "Salesforce"],
+      githubUrl: "https://github.com/username/project2",
+      demoUrl: "https://project2-demo.com"
+    },
+    {
+      title: "Agent Studio Platform",
+      description: "Multiple AI-driven agents including Dynamic Report Agent, Executive Summary Agent, and Analysis Agent.",
+      image: "/phone.svg",
+      imageAlt: "Agent Studio Platform",
+      technologies: ["AI/ML", "Analytics", "Automation", "React"],
+      githubUrl: "https://github.com/username/project3",
+      demoUrl: "https://project3-demo.com"
+    }
+  ];
+
+  // Animation variants
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
+  
+  const container = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { 
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
   return (
-    <section id="projects" className="projects-section">
-      <Container style={{ padding: 'var(--space-9) 0' }}>
-        <Flex direction="column" align="center" mb="6" className="section-header">
-          <Text size="4" color="blue" mb="2">MY WORK</Text>
-          <Heading size="8" className="gradient-text">Featured Projects</Heading>
-          <Text as="p" color="gray" mt="3" size="3" style={{ maxWidth: '600px', textAlign: 'center' }}>
-            Explore some of my recent projects where I've applied modern technologies to solve real-world problems.
-          </Text>
-        </Flex>
-
-        <Grid columns={{ initial: "1", sm: "3" }} gap="6" className="projects-grid">
-          {/* Project Card 1 */}
-          <Card className="project-card">
-            <Inset clip="padding-box" side="top" pb="current">
-              <Box position="relative" style={{ height: '200px', overflow: 'hidden' }}>
-                <Image
-                  src="/phone.svg"
-                  alt="AI-Powered Answer Agent"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = 'https://placehold.co/600x400/5583EE/ffffff?text=AI+Answer+Agent';
+    <Box 
+      id="projects" 
+      style={{ 
+        background: 'var(--slate-1)',
+        position: 'relative',
+        paddingTop: '120px',
+        paddingBottom: '120px',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Subtle background element */}
+      <Box style={{
+        position: 'absolute',
+        width: '40%',
+        height: '50%',
+        right: 0,
+        top: 0,
+        background: 'var(--blue-2)',
+        opacity: 0.3,
+        filter: 'blur(120px)',
+        zIndex: 0,
+        borderRadius: '50% 0 0 50%',
+      }} />
+      
+      <Container size="3" style={{ position: 'relative', zIndex: 1 }}>
+        <MotionFlex 
+          direction="column"
+          align="center"
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          style={{ marginBottom: '80px' }}
+        >
+          <MotionHeading 
+            size="1"
+            color="blue"
+            variants={fadeIn}
+            style={{ 
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              marginBottom: '16px',
+            }}
+          >
+            Selected Work
+          </MotionHeading>
+          
+          <MotionHeading 
+            size={{ initial: "6", sm: "7" }}
+            variants={fadeIn}
+            className="gradient-text"
+            style={{ 
+              marginBottom: '24px',
+              textAlign: 'center',
+            }}
+          >
+            Showcasing My Remarkable Projects
+          </MotionHeading>
+          
+          <MotionText
+            size="3"
+            color="gray"
+            variants={fadeIn}
+            style={{ 
+              maxWidth: '650px',
+              textAlign: 'center',
+              lineHeight: 1.6,
+            }}
+          >
+            We craft digital, graphic and dimensional thinking, to create category leading
+            brand experiences that have meaning.
+          </MotionText>
+        </MotionFlex>
+        
+        {/* Projects Grid */}
+        <MotionBox
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          style={{ marginBottom: '60px' }}
+        >
+          <Grid columns={{ initial: "1", md: "3" }} gap="6">
+            {projects.map((project, index) => (
+              <MotionCard
+                key={project.title}
+                variants={fadeIn}
+                style={{
+                  border: '1px solid var(--slate-4)',
+                  background: 'var(--slate-1)',
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                }}
+                whileHover={{
+                  y: -10,
+                  boxShadow: '0 15px 30px rgba(0, 0, 0, 0.1)',
+                  borderColor: 'var(--blue-6)',
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                <Box 
+                  style={{ 
+                    position: 'relative', 
+                    height: '240px', 
+                    overflow: 'hidden',
+                    background: index === 0 ? 'var(--blue-3)' : index === 1 ? 'var(--green-3)' : 'var(--orange-3)',
                   }}
-                />
-                <Box className="project-links" style={{
-                  position: 'absolute',
-                  top: '12px',
-                  right: '12px',
-                  display: 'flex',
-                  gap: '8px',
-                  zIndex: 10
-                }}>
-                  <Link href="https://github.com/username/project1" target="_blank" style={{
-                    width: '32px',
-                    height: '32px',
-                    borderRadius: '50%',
-                    background: 'rgba(0,0,0,0.6)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'white'
-                  }}>
-                    <GitHubLogoIcon width="16" height="16" />
-                  </Link>
-                  <Link href="https://project1-demo.com" target="_blank" style={{
-                    width: '32px',
-                    height: '32px',
-                    borderRadius: '50%',
-                    background: 'rgba(0,0,0,0.6)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'white'
-                  }}>
-                    <ArrowRightIcon width="16" height="16" />
-                  </Link>
+                >
+                  <Image
+                    src={project.image}
+                    alt={project.imageAlt}
+                    fill
+                    style={{ 
+                      objectFit: 'cover',
+                      transition: 'transform 0.5s ease',
+                    }}
+                    className="project-image"
+                  />
                 </Box>
-              </Box>
-            </Inset>
-            <Box p="4">
-              <Heading size="4">AI-Powered Answer Agent</Heading>
-              <Text as="p" color="gray" mt="2" size="2" style={{ minHeight: '60px' }}>
-                Automated system using RAG and OpenAI's Ada model for intelligent response generation with Microsoft recognition.
-              </Text>
-              <Box className="tech-stack" mt="4">
-                <Text size="2" color="gray" mb="2">Technologies:</Text>
-                <Flex gap="2" wrap="wrap">
-                  <Badge variant="soft" radius="full">
-                    <Flex align="center" gap="1">
-                      <Box className="tech-icon">🤖</Box>
-                      <Text>OpenAI</Text>
-                    </Flex>
-                  </Badge>
-                  <Badge variant="soft" radius="full">
-                    <Flex align="center" gap="1">
-                      <Box className="tech-icon">🔍</Box>
-                      <Text>SOLR</Text>
-                    </Flex>
-                  </Badge>
-                  <Badge variant="soft" radius="full">
-                    <Flex align="center" gap="1">
-                      <Box className="tech-icon">📚</Box>
-                      <Text>RAG</Text>
-                    </Flex>
-                  </Badge>
-                  <Badge variant="soft" radius="full">
-                    <Flex align="center" gap="1">
-                      <Box className="tech-icon">🧠</Box>
-                      <Text>ML</Text>
-                    </Flex>
-                  </Badge>
-                </Flex>
-              </Box>
-            </Box>
-          </Card>
-
-          {/* Project Card 2 */}
-          <Card className="project-card">
-            <Inset clip="padding-box" side="top" pb="current">
-              <Box position="relative" style={{ height: '200px', overflow: 'hidden' }}>
-                <Image
-                  src="/phone.svg"
-                  alt="Profile Center (Trust Center)"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = 'https://placehold.co/600x400/55EE83/ffffff?text=Trust+Center';
-                  }}
-                />
-                <Box className="project-links" style={{
-                  position: 'absolute',
-                  top: '12px',
-                  right: '12px',
-                  display: 'flex',
-                  gap: '8px',
-                  zIndex: 10
-                }}>
-                  <Link href="https://github.com/username/project2" target="_blank" style={{
-                    width: '32px',
-                    height: '32px',
-                    borderRadius: '50%',
-                    background: 'rgba(0,0,0,0.6)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'white'
-                  }}>
-                    <GitHubLogoIcon width="16" height="16" />
-                  </Link>
-                  <Link href="https://project2-demo.com" target="_blank" style={{
-                    width: '32px',
-                    height: '32px',
-                    borderRadius: '50%',
-                    background: 'rgba(0,0,0,0.6)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'white'
-                  }}>
-                    <ArrowRightIcon width="16" height="16" />
-                  </Link>
+                
+                <Box p="5">
+                  <Heading size="4" style={{ marginBottom: '12px' }}>
+                    {project.title}
+                  </Heading>
+                  
+                  <Text as="p" size="2" color="gray" style={{ marginBottom: '24px', lineHeight: 1.6 }}>
+                    {project.description}
+                  </Text>
+                  
+                  <Flex gap="2" wrap="wrap" style={{ marginBottom: '24px' }}>
+                    {project.technologies.map((tech) => (
+                      <Badge key={tech} variant="surface" radius="full">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </Flex>
+                  
+                  <Flex gap="3">
+                    <Link 
+                      href={project.demoUrl} 
+                      target="_blank"
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        color: 'var(--blue-9)',
+                        fontSize: '14px',
+                        fontWeight: 500,
+                      }}
+                      className="project-link"
+                    >
+                      View Project
+                      <ExternalLinkIcon width="14" height="14" />
+                    </Link>
+                    
+                    <Link 
+                      href={project.githubUrl} 
+                      target="_blank"
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        color: 'var(--slate-11)',
+                        fontSize: '14px',
+                        fontWeight: 500,
+                      }}
+                      className="project-link"
+                    >
+                      Source Code
+                      <GitHubLogoIcon width="14" height="14" />
+                    </Link>
+                  </Flex>
                 </Box>
-              </Box>
-            </Inset>
-            <Box p="4">
-              <Heading size="4">Profile Center (Trust Center)</Heading>
-              <Text as="p" color="gray" mt="2" size="2" style={{ minHeight: '60px' }}>
-                AI-powered security profiles with anonymous viewer tracking, Salesforce/Slack integration, and ChatGPT features.
-              </Text>
-              <Box className="tech-stack" mt="4">
-                <Text size="2" color="gray" mb="2">Technologies:</Text>
-                <Flex gap="2" wrap="wrap">
-                  <Badge variant="soft" radius="full">
-                    <Flex align="center" gap="1">
-                      <Box className="tech-icon">🤖</Box>
-                      <Text>OpenAI</Text>
-                    </Flex>
-                  </Badge>
-                  <Badge variant="soft" radius="full">
-                    <Flex align="center" gap="1">
-                      <Box className="tech-icon">🍃</Box>
-                      <Text>Spring Boot</Text>
-                    </Flex>
-                  </Badge>
-                  <Badge variant="soft" radius="full">
-                    <Flex align="center" gap="1">
-                      <Box className="tech-icon">💬</Box>
-                      <Text>Slack</Text>
-                    </Flex>
-                  </Badge>
-                  <Badge variant="soft" radius="full">
-                    <Flex align="center" gap="1">
-                      <Box className="tech-icon">☁️</Box>
-                      <Text>Salesforce</Text>
-                    </Flex>
-                  </Badge>
-                </Flex>
-              </Box>
-            </Box>
-          </Card>
-
-          {/* Project Card 3 */}
-          <Card className="project-card">
-            <Inset clip="padding-box" side="top" pb="current">
-              <Box position="relative" style={{ height: '200px', overflow: 'hidden' }}>
-                <Image
-                  src="/phone.svg"
-                  alt="Agent Studio Platform"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = 'https://placehold.co/600x400/EE5583/ffffff?text=Agent+Studio';
-                  }}
-                />
-                <Box className="project-links" style={{
-                  position: 'absolute',
-                  top: '12px',
-                  right: '12px',
-                  display: 'flex',
-                  gap: '8px',
-                  zIndex: 10
-                }}>
-                  <Link href="https://github.com/username/project3" target="_blank" style={{
-                    width: '32px',
-                    height: '32px',
-                    borderRadius: '50%',
-                    background: 'rgba(0,0,0,0.6)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'white'
-                  }}>
-                    <GitHubLogoIcon width="16" height="16" />
-                  </Link>
-                  <Link href="https://project3-demo.com" target="_blank" style={{
-                    width: '32px',
-                    height: '32px',
-                    borderRadius: '50%',
-                    background: 'rgba(0,0,0,0.6)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'white'
-                  }}>
-                    <ArrowRightIcon width="16" height="16" />
-                  </Link>
-                </Box>
-              </Box>
-            </Inset>
-            <Box p="4">
-              <Heading size="4">Agent Studio Platform</Heading>
-              <Text as="p" color="gray" mt="2" size="2" style={{ minHeight: '60px' }}>
-                Multiple AI-driven agents including Dynamic Report Agent, Executive Summary Agent, and Analysis Agent.
-              </Text>
-              <Box className="tech-stack" mt="4">
-                <Text size="2" color="gray" mb="2">Technologies:</Text>
-                <Flex gap="2" wrap="wrap">
-                  <Badge variant="soft" radius="full">
-                    <Flex align="center" gap="1">
-                      <Box className="tech-icon">🤖</Box>
-                      <Text>AI/ML</Text>
-                    </Flex>
-                  </Badge>
-                  <Badge variant="soft" radius="full">
-                    <Flex align="center" gap="1">
-                      <Box className="tech-icon">📊</Box>
-                      <Text>Analytics</Text>
-                    </Flex>
-                  </Badge>
-                  <Badge variant="soft" radius="full">
-                    <Flex align="center" gap="1">
-                      <Box className="tech-icon">🔄</Box>
-                      <Text>Automation</Text>
-                    </Flex>
-                  </Badge>
-                  <Badge variant="soft" radius="full">
-                    <Flex align="center" gap="1">
-                      <Box className="tech-icon">⚛️</Box>
-                      <Text>React</Text>
-                    </Flex>
-                  </Badge>
-                </Flex>
-              </Box>
-            </Box>
-          </Card>
-        </Grid>
-
-        <Flex justify="center" mt="8">
-          <Button size="4" variant="outline" asChild>
-            <Link href="/projects" style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: '0 24px',
-              borderRadius: '40px',
-              transition: 'all 0.3s ease'
-            }}>
-              View All Projects
-              <ArrowRightIcon width="16" height="16" />
+              </MotionCard>
+            ))}
+          </Grid>
+        </MotionBox>
+        
+        <MotionFlex 
+          justify="center"
+          variants={fadeIn}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <Button 
+            size="3" 
+            variant="outline"
+            style={{ 
+              borderColor: 'var(--slate-6)',
+              color: 'var(--slate-12)',
+              fontWeight: 500,
+              paddingLeft: '24px',
+              paddingRight: '24px',
+            }}
+            className="view-all-button"
+            asChild
+          >
+            <Link href="/projects">
+              <Flex align="center" gap="2">
+                View All Projects
+                <ArrowRightIcon />
+              </Flex>
             </Link>
           </Button>
-        </Flex>
+        </MotionFlex>
       </Container>
-    </section>
+      
+      {/* Custom styles */}
+      <style jsx global>{`
+        .project-image {
+          transition: transform 0.5s ease;
+        }
+        
+        .project-link {
+          transition: all 0.3s ease;
+        }
+        
+        .project-link:hover {
+          color: var(--blue-10);
+          transform: translateX(3px);
+        }
+        
+        .view-all-button {
+          transition: all 0.3s ease !important;
+        }
+        
+        .view-all-button:hover {
+          transform: translateY(-3px) !important;
+          border-color: var(--blue-6) !important;
+          color: var(--blue-9) !important;
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06) !important;
+        }
+      `}</style>
+    </Box>
   );
 }
