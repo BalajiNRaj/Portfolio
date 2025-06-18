@@ -18,7 +18,7 @@ interface Skill {
   tags: string[];
 }
 
-const MotionCard = motion(Card) as any; // Type assertion for motion component
+const MotionCard = motion(Card); // Motion component with inferred types
 
 export default function SkillsSection() {
   const skills: Skill[] = [
