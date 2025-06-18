@@ -28,7 +28,7 @@ export default function ProjectsSection() {
     {
       title: "AI-Powered Answer Agent",
       description: "Automated system using RAG and OpenAI's Ada model for intelligent response generation with Microsoft recognition.",
-      image: "/phone.svg",
+      image: "/window.svg",
       imageAlt: "AI-Powered Answer Agent",
       technologies: ["OpenAI", "SOLR", "RAG", "ML"],
       githubUrl: "https://github.com/username/project1",
@@ -37,7 +37,7 @@ export default function ProjectsSection() {
     {
       title: "Profile Center (Trust Center)",
       description: "AI-powered security profiles with anonymous viewer tracking, Salesforce/Slack integration, and ChatGPT features.",
-      image: "/phone.svg",
+      image: "/file.svg",
       imageAlt: "Profile Center (Trust Center)",
       technologies: ["OpenAI", "Spring Boot", "Slack", "Salesforce"],
       githubUrl: "https://github.com/username/project2",
@@ -46,7 +46,7 @@ export default function ProjectsSection() {
     {
       title: "Agent Studio Platform",
       description: "Multiple AI-driven agents including Dynamic Report Agent, Executive Summary Agent, and Analysis Agent.",
-      image: "/phone.svg",
+      image: "/globe.svg",
       imageAlt: "Agent Studio Platform",
       technologies: ["AI/ML", "Analytics", "Automation", "React"],
       githubUrl: "https://github.com/username/project3",
@@ -116,7 +116,7 @@ export default function ProjectsSection() {
               marginBottom: '16px',
             }}
           >
-            Selected Work
+            Featured Projects
           </MotionHeading>
           
           <MotionHeading 
@@ -128,7 +128,7 @@ export default function ProjectsSection() {
               textAlign: 'center',
             }}
           >
-            Showcasing My Remarkable Projects
+            AI & Enterprise Solutions
           </MotionHeading>
           
           <MotionText
@@ -141,8 +141,8 @@ export default function ProjectsSection() {
               lineHeight: 1.6,
             }}
           >
-            We craft digital, graphic and dimensional thinking, to create category leading
-            brand experiences that have meaning.
+            Leveraging Java, React, and cutting-edge AI technologies including LLMs and RAG architecture
+            to build intelligent enterprise solutions that solve real-world problems.
           </MotionText>
         </MotionFlex>
         
@@ -159,6 +159,7 @@ export default function ProjectsSection() {
               <MotionCard
                 key={project.title}
                 variants={fadeIn}
+                className="project-card"
                 style={{
                   border: '1px solid var(--slate-4)',
                   background: 'var(--slate-1)',
@@ -177,18 +178,24 @@ export default function ProjectsSection() {
                     position: 'relative', 
                     height: '240px', 
                     overflow: 'hidden',
-                    background: index === 0 ? 'var(--blue-3)' : index === 1 ? 'var(--green-3)' : 'var(--orange-3)',
+                    background: index === 0 ? 'var(--blue-3)' : index === 1 ? 'var(--violet-3)' : 'var(--green-3)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}
                 >
                   <Image
                     src={project.image}
                     alt={project.imageAlt}
-                    fill
+                    width={120}
+                    height={120}
                     style={{ 
-                      objectFit: 'cover',
-                      transition: 'transform 0.5s ease',
+                      opacity: 0.8,
+                      filter: 'drop-shadow(0 8px 24px rgba(0, 0, 0, 0.1))',
+                      transition: 'all 0.5s ease',
                     }}
                     className="project-image"
+                    priority={index < 2}
                   />
                 </Box>
                 
@@ -283,7 +290,13 @@ export default function ProjectsSection() {
       {/* Custom styles */}
       <style jsx global>{`
         .project-image {
-          transition: transform 0.5s ease;
+          transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .project-card:hover .project-image {
+          transform: scale(1.15) translateY(-10px);
+          opacity: 1 !important;
+          filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.2)) !important;
         }
         
         .project-link {

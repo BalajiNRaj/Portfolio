@@ -25,7 +25,7 @@ export default function RootLayout({
         >
           <div className="min-h-screen bg-background text-text">
             <AppBar />
-            <main className="container mx-auto px-4 py-8">
+            <main className="container mx-auto px-6 sm:px-8 md:px-10 pt-[calc(var(--header-height)+16px)] pb-8">
               {children}
             </main>
           </div>

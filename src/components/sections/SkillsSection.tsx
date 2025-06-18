@@ -27,29 +27,30 @@ export default function SkillsSection() {
   // Core skills
   const skills: Skill[] = [
     {
-      name: "UI/UX Design",
-      icon: <CodeIcon width={24} height={24} />,
-      description: "Creating intuitive and visually appealing user interfaces with a focus on user experience."
-    },
-    {
-      name: "Web Development",
-      icon: <RocketIcon width={24} height={24} />,
-      description: "Building responsive and performant web applications using modern frameworks and technologies."
-    },
-    {
-      name: "AI Integration",
+      name: "AI & LLM Development",
       icon: <StarFilledIcon width={24} height={24} />,
-      description: "Implementing artificial intelligence solutions to enhance applications and solve complex problems."
+      description: "Building intelligent systems using LLMs, RAG architecture, and AI technologies to solve complex business problems."
+    },
+    {
+      name: "Full Stack Development",
+      icon: <CodeIcon width={24} height={24} />,
+      description: "Creating robust applications with Java backends and React frontends, with expertise in MongoDB and Solr."
+    },
+    {
+      name: "Enterprise Solutions",
+      icon: <RocketIcon width={24} height={24} />,
+      description: "Designing and implementing scalable enterprise solutions with a focus on performance, security, and maintainability."
     }
   ];
 
   // Technical skills with proficiency levels
   const technologies: Technology[] = [
+    { name: "Java", proficiency: 95 },
     { name: "React", proficiency: 90 },
-    { name: "TypeScript", proficiency: 90 },
-    { name: "Node.js", proficiency: 85 },
-    { name: "Python", proficiency: 80 },
-    { name: "TensorFlow", proficiency: 75 }
+    { name: "AI & LLM", proficiency: 88 },
+    { name: "MongoDB", proficiency: 85 },
+    { name: "Solr", proficiency: 85 },
+    { name: "RAG Architecture", proficiency: 82 }
   ];
 
   // Animation variants
@@ -126,7 +127,7 @@ export default function SkillsSection() {
               textAlign: 'center',
             }}
           >
-            Masterful Talents and Honors
+            Technical Excellence & Innovation
           </MotionHeading>
           
           <MotionText
@@ -139,8 +140,9 @@ export default function SkillsSection() {
               lineHeight: 1.6,
             }}
           >
-            We craft digital, graphic and dimensional thinking, to create category leading
-            brand experiences that have meaning.
+            I specialize in Java enterprise development, modern frontend solutions with React, 
+            and cutting-edge AI technologies including LLMs and RAG architecture to deliver 
+            intelligent and scalable applications.
           </MotionText>
         </MotionFlex>
         
@@ -220,21 +222,21 @@ export default function SkillsSection() {
               <Flex direction="column" gap="5">
                 <Box>
                   <Text size="3" weight="medium" style={{ color: 'var(--blue-9)' }}>6+ Years</Text>
-                  <Text size="2" color="gray">Professional Experience</Text>
+                  <Text size="2" color="gray">Enterprise Java Development</Text>
+                </Box>
+                
+                <Box style={{ height: '1px', background: 'var(--slate-4)' }} />
+                
+                <Box>
+                  <Text size="3" weight="medium" style={{ color: 'var(--blue-9)' }}>4+ Years</Text>
+                  <Text size="2" color="gray">AI & LLM Implementation</Text>
                 </Box>
                 
                 <Box style={{ height: '1px', background: 'var(--slate-4)' }} />
                 
                 <Box>
                   <Text size="3" weight="medium" style={{ color: 'var(--blue-9)' }}>15+ Projects</Text>
-                  <Text size="2" color="gray">Successfully Completed</Text>
-                </Box>
-                
-                <Box style={{ height: '1px', background: 'var(--slate-4)' }} />
-                
-                <Box>
-                  <Text size="3" weight="medium" style={{ color: 'var(--blue-9)' }}>10+ Solutions</Text>
-                  <Text size="2" color="gray">AI/ML Implementations</Text>
+                  <Text size="2" color="gray">Successful RAG & AI Solutions</Text>
                 </Box>
               </Flex>
             </MotionBox>
@@ -253,7 +255,7 @@ export default function SkillsSection() {
             variants={fadeIn}
             style={{ marginBottom: '40px' }}
           >
-            Services I Offer
+            Specialized Expertise
           </MotionHeading>
           
           <Grid columns={{ initial: "1", sm: "3" }} gap="5">

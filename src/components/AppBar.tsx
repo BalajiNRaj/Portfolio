@@ -54,9 +54,9 @@ const AppBar = () => {
       left="0"
       right="0"
       style={{
-        backgroundColor: scrolled ? 'var(--slate-1)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(12px)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
+        backgroundColor: scrolled ? 'var(--slate-1)' : 'rgba(var(--slate-1-rgb), 0.85)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
         boxShadow: scrolled ? 'var(--shadow-blur)' : 'none',
         borderBottom: scrolled ? '1px solid var(--slate-4)' : 'none',
         zIndex: 1000,
@@ -64,7 +64,7 @@ const AppBar = () => {
         transition: 'all 0.4s ease'
       }}
     >
-      <Container size="4" style={{ height: '100%' }}>
+      <Container size="4" style={{ height: '100%', padding: '0 16px' }}>
         <Flex py="3" justify="between" align="center" style={{ height: '100%' }}>
           <MotionFlex
             initial={{ opacity: 0, x: -20 }}
@@ -104,7 +104,7 @@ const AppBar = () => {
                   }} 
                 />
               </Box>
-              <Box>
+              <Box style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
                 <Text 
                   className="gradient-text"
                   style={{ 
@@ -116,7 +116,7 @@ const AppBar = () => {
                 >
                   Balaji
                 </Text>
-                <Badge size="1" variant="soft" color="blue" style={{ marginTop: '2px' }}>Developer</Badge>
+                <Badge size="1" variant="soft" color="blue">Developer</Badge>
               </Box>
             </Link>
           </MotionFlex>
@@ -272,7 +272,7 @@ const AppBar = () => {
             zIndex: 1000
           }}
         >
-          <Container size="4">
+          <Container size="4" style={{ padding: '0 24px' }}>
             <Flex direction="column" gap="5">
               {navItems.map((item, index) => {
                 const isActive = pathname === item.href;

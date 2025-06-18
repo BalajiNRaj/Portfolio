@@ -14,7 +14,8 @@
 
   /* Container */
   --container-max-width: 1200px;
-  --container-padding: var(--space-4);
+  --container-padding: 24px;
+  --container-padding-mobile: 16px;
 
   /* Breakpoints */
   --mobile: 640px;
@@ -25,6 +26,10 @@
   --shadow-blur: 0 2px 8px rgba(0, 0, 0, 0.1);
   --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.1);
   --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.15);
+  
+  /* RGB Values for transparency */
+  --slate-1-rgb: 21, 23, 24;
+  --color-background-rgb: 9, 9, 11;
 }
 
 html,
@@ -63,6 +68,19 @@ body {
   background-color: rgba(0, 112, 243, 0.1) !important;
   color: var(--blue-11) !important;
   transform: translateY(-2px) scale(1.05);
+}
+
+/* Container responsive padding */
+[data-radix-container] {
+  padding-left: var(--container-padding-mobile) !important;
+  padding-right: var(--container-padding-mobile) !important;
+}
+
+@media (min-width: 640px) {
+  [data-radix-container] {
+    padding-left: var(--container-padding) !important;
+    padding-right: var(--container-padding) !important;
+  }
 }
 
 /* Simplified text animations - optimized for performance */
