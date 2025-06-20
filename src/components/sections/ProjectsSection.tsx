@@ -31,7 +31,7 @@ export default function ProjectsSection() {
       image: "/window.svg",
       imageAlt: "AI-Powered Answer Agent",
       technologies: ["OpenAI", "SOLR", "RAG", "ML"],
-      githubUrl: "https://github.com/username/project1",
+      githubUrl: "https://github.com/BalajiNRaj/project1",
       demoUrl: "https://project1-demo.com"
     },
     {
@@ -40,7 +40,7 @@ export default function ProjectsSection() {
       image: "/file.svg",
       imageAlt: "Profile Center (Trust Center)",
       technologies: ["OpenAI", "Spring Boot", "Slack", "Salesforce"],
-      githubUrl: "https://github.com/username/project2",
+      githubUrl: "https://github.com/BalajiNRaj/project2",
       demoUrl: "https://project2-demo.com"
     },
     {
@@ -49,7 +49,7 @@ export default function ProjectsSection() {
       image: "/globe.svg",
       imageAlt: "Agent Studio Platform",
       technologies: ["AI/ML", "Analytics", "Automation", "React"],
-      githubUrl: "https://github.com/username/project3",
+      githubUrl: "https://github.com/BalajiNRaj/project3",
       demoUrl: "https://project3-demo.com"
     }
   ];
@@ -74,8 +74,8 @@ export default function ProjectsSection() {
   return (
     <Box 
       id="projects" 
+      className="projects-section"
       style={{ 
-        background: 'var(--slate-1)',
         position: 'relative',
         paddingTop: '120px',
         paddingBottom: '120px',
@@ -133,12 +133,12 @@ export default function ProjectsSection() {
           
           <MotionText
             size="3"
-            color="gray"
             variants={fadeIn}
             style={{ 
               maxWidth: '650px',
               textAlign: 'center',
               lineHeight: 1.6,
+              color: 'var(--slate-11)'
             }}
           >
             Leveraging Java, React, and cutting-edge AI technologies including LLMs and RAG architecture
@@ -154,15 +154,15 @@ export default function ProjectsSection() {
           viewport={{ once: true }}
           style={{ marginBottom: '60px' }}
         >
-          <Grid columns={{ initial: "1", md: "3" }} gap="6">
+          <Grid columns={{ initial: "1", md: "3" }} gapX="6" gapY="6">
             {projects.map((project, index) => (
               <MotionCard
                 key={project.title}
                 variants={fadeIn}
+                variant="ghost"
                 className="project-card"
                 style={{
                   border: '1px solid var(--slate-4)',
-                  background: 'var(--slate-1)',
                   borderRadius: '16px',
                   overflow: 'hidden',
                 }}
@@ -210,7 +210,7 @@ export default function ProjectsSection() {
                   
                   <Flex gap="2" wrap="wrap" style={{ marginBottom: '24px' }}>
                     {project.technologies.map((tech) => (
-                      <Badge key={tech} variant="surface" radius="full">
+                      <Badge key={tech} variant="outline" radius="full">
                         {tech}
                       </Badge>
                     ))}
@@ -289,6 +289,23 @@ export default function ProjectsSection() {
       
       {/* Custom styles */}
       <style jsx global>{`
+        .projects-section {
+          background: var(--slate-1);
+        }
+        
+        [data-theme="dark"] .projects-section {
+          background: var(--slate-2);
+        }
+        
+        .project-card {
+          background: var(--slate-2);
+        }
+        
+        [data-theme="dark"] .project-card {
+          background: var(--slate-3);
+          border-color: var(--slate-6);
+        }
+        
         .project-image {
           transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }

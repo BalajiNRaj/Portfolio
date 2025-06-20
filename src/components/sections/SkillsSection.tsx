@@ -154,7 +154,7 @@ export default function SkillsSection() {
           viewport={{ once: true }}
           style={{ marginBottom: '80px' }}
         >
-          <Grid columns={{ initial: "1", md: "2" }} gap="9">
+          <Grid columns={{ initial: "1", md: "2" }} gapX="9" gapY="9">
             <Box>
               <MotionHeading 
                 size="4"
@@ -201,7 +201,6 @@ export default function SkillsSection() {
             <MotionBox
               variants={fadeIn}
               style={{
-                background: 'var(--card-background)',
                 borderRadius: '16px',
                 border: '1px solid var(--slate-4)',
                 padding: '40px',
@@ -258,14 +257,14 @@ export default function SkillsSection() {
             Specialized Expertise
           </MotionHeading>
           
-          <Grid columns={{ initial: "1", sm: "3" }} gap="5">
+          <Grid columns={{ initial: "1", sm: "3" }} gapX="6" gapY="6">
             {skills.map((skill) => (
               <MotionCard
                 key={skill.name}
                 variants={fadeIn}
+                variant="ghost"
                 style={{
                   border: '1px solid var(--slate-4)',
-                  background: 'var(--card-background)', /* Using a more theme-appropriate variable */
                   padding: '32px',
                   borderRadius: '12px',
                 }}

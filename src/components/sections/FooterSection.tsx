@@ -109,7 +109,7 @@ export default function FooterSection() {
               gap="5"
             >
               <Text size="4" weight="medium">Let's Connect</Text>
-              <Text size="3" color="gray" style={{ maxWidth: '450px', lineHeight: 1.6 }}>
+              <Text size="3" style={{ maxWidth: '450px', lineHeight: 1.6 }}>
                 I'm currently available for freelance work or full-time positions. 
                 Feel free to reach out if you have a project that needs my expertise.
               </Text>
@@ -196,7 +196,7 @@ export default function FooterSection() {
               mt="2"
             >
               <Link 
-                href="https://www.linkedin.com/in/balaji-n-607416103/" 
+                href="https://www.linkedin.com/in/balaji-nagarajan-607416103/" 
                 target="_blank"
                 aria-label="LinkedIn"
               >
@@ -219,7 +219,7 @@ export default function FooterSection() {
               </Link>
               
               <Link 
-                href="https://github.com/balaji-nagarajan" 
+                href="https://github.com/BalajiNRaj" 
                 target="_blank"
                 aria-label="GitHub"
               >

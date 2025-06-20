@@ -200,7 +200,7 @@ const AppBar = () => {
               <Button 
                 variant="ghost" 
                 size="2" 
-                onClick={() => window.open('https://www.linkedin.com/in/balaji-n-607416103/', '_blank')}
+                onClick={() => window.open('https://www.linkedin.com/in/balaji-nagarajan-607416103/', '_blank')}
                 style={{
                   borderRadius: '50%',
                   width: '36px',
@@ -218,7 +218,7 @@ const AppBar = () => {
               <Button 
                 variant="ghost" 
                 size="2" 
-                onClick={() => window.open('https://github.com/balaji-nagarajan', '_blank')}
+                onClick={() => window.open('https://github.com/BalajiNRaj', '_blank')}
                 style={{
                   borderRadius: '50%',
                   width: '36px',
@@ -354,7 +354,7 @@ const AppBar = () => {
                   variant="ghost" 
                   size="3" 
                   onClick={() => {
-                    window.open('https://www.linkedin.com/in/balaji-n-607416103/', '_blank');
+                    window.open('https://www.linkedin.com/in/balaji-nagarajan-607416103/', '_blank');
                     setIsMenuOpen(false);
                   }}
                   style={{
@@ -375,7 +375,7 @@ const AppBar = () => {
                   variant="ghost" 
                   size="3" 
                   onClick={() => {
-                    window.open('https://github.com/balaji-nagarajan', '_blank');
+                    window.open('https://github.com/BalajiNRaj', '_blank');
                     setIsMenuOpen(false);
                   }}
                   style={{
