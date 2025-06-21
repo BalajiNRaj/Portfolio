@@ -211,7 +211,7 @@ export default function ProjectsPage() {
                                 </Badge>
                               )}
                             </Flex>
-                            <Text size="2" color="gray" as="p" mb="3">
+                            <Text size="2"  as="p" mb="3">
                               {project.description}
                             </Text>
                           </Box>
@@ -247,7 +247,7 @@ export default function ProjectsPage() {
                                           : 'var(--green-11)'
                                       } />
                                     </Box>
-                                    <Text as="p" color="gray" size="2">
+                                    <Text as="p"  size="2">
                                       {detail}
                                     </Text>
                                   </Flex>
@@ -383,7 +383,7 @@ export default function ProjectsPage() {
                                 )}
                                 {project.title}
                               </Heading>
-                              <Text size="2" color="gray">
+                              <Text size="2" >
                                 {project.description}
                               </Text>
 
@@ -445,7 +445,7 @@ export default function ProjectsPage() {
 
           {filteredProjects.length === 0 && (
             <Box className="no-results">
-              <Text size="3" color="gray">
+              <Text size="3" >
                 No projects match your filters
               </Text>
               <Button

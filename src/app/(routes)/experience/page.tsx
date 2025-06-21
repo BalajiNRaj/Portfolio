@@ -988,8 +988,8 @@ export default function ExperiencePage() {
                     <Box>
                       <Badge size="1" variant="soft" color="blue">2015-2019</Badge>
                       <Heading size="4" mt="1">B.Tech, Information Technology</Heading>
-                      <Text size="3" color="gray">Sri Ramakrishna Engineering College</Text>
-                      <Text size="3" color="gray">Coimbatore, Tamil Nadu</Text>
+                      <Text size="3" >Sri Ramakrishna Engineering College</Text>
+                      <Text size="3" >Coimbatore, Tamil Nadu</Text>
                       <Badge mt="2">CGPA: 8.06</Badge>
                     </Box>
                   </Flex>
@@ -1064,7 +1064,7 @@ export default function ExperiencePage() {
                     <Box>
                       <Badge size="1" variant="soft" color="blue">2024</Badge>
                       <Heading size="4" mt="1">Game Changer Award</Heading>
-                      <Text size="3" color="gray">Thomson Reuters</Text>
+                      <Text size="3" >Thomson Reuters</Text>
                       <Text size="3" mt="2">
                         Recognized for innovation in implementing AI technologies in the Trust Center platform, significantly improving search accuracy and user experience.
                       </Text>
@@ -1091,7 +1091,7 @@ export default function ExperiencePage() {
                     <Box>
                       <Badge size="1" variant="soft" color="purple">2023</Badge>
                       <Heading size="4" mt="1">Best Team Award</Heading>
-                      <Text size="3" color="gray">Trust Center Project</Text>
+                      <Text size="3" >Trust Center Project</Text>
                       <Text size="3" mt="2">
                         Led the development team that received recognition for exceptional collaboration and delivery of critical features ahead of schedule.
                       </Text>
@@ -1118,7 +1118,7 @@ export default function ExperiencePage() {
                     <Box>
                       <Badge size="1" variant="soft" color="orange">2021</Badge>
                       <Heading size="4" mt="1">Customer Delight Award</Heading>
-                      <Text size="3" color="gray">IBM</Text>
+                      <Text size="3" >IBM</Text>
                       <Text size="3" mt="2">
                         Awarded for exceptional client satisfaction after delivering a complex financial application with improved performance metrics and user experience.
                       </Text>

@@ -135,7 +135,7 @@ export default function FooterSection() {
                 <MobileIcon width="20" height="20" />
               </Box>
               <Flex direction="column" gap="1">
-                <Text size="2" color="gray">Mon-Fri from 8am to 5pm.</Text>
+                <Text size="2" >Mon-Fri from 8am to 5pm.</Text>
                 <Text size="3" weight="medium">+91 8667707484</Text>
               </Flex>
             </MotionFlex>
@@ -160,7 +160,7 @@ export default function FooterSection() {
                 <EnvelopeClosedIcon width="20" height="20" />
               </Box>
               <Flex direction="column" gap="1">
-                <Text size="2" color="gray">I'm there to help you.</Text>
+                <Text size="2" >I'm there to help you.</Text>
                 <Text size="3" weight="medium">balajinraj007@gmail.com</Text>
               </Flex>
             </MotionFlex>
@@ -185,7 +185,7 @@ export default function FooterSection() {
                 <HomeIcon width="20" height="20" />
               </Box>
               <Flex direction="column" gap="1">
-                <Text size="2" color="gray">Let's Meet.</Text>
+                <Text size="2" >Let's Meet.</Text>
                 <Text size="3" weight="medium">Coimbatore, TN</Text>
               </Flex>
             </MotionFlex>
@@ -315,10 +315,10 @@ export default function FooterSection() {
             direction={{ initial: 'column', sm: 'row' }}
             gap={{ initial: '4', sm: '0' }}
           >
-            <Text size="2" color="gray">
+            <Text size="2" >
               © {new Date().getFullYear()} Balaji Nagarajan. All rights reserved.
             </Text>
-            <Text size="2" color="gray">
+            <Text size="2" >
               Designed and built with passion
             </Text>
           </Flex>

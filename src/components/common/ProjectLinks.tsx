@@ -28,7 +28,7 @@ export default function ProjectLinks({
     return (
       <Flex gap="3" className={className}>
         {showPrivateBadge && (
-          <Badge size={size} color="gray" radius="full">
+          <Badge size={size}  radius="full">
             Private Project
           </Badge>
         )}

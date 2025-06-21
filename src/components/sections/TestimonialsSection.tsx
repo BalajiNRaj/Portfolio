@@ -36,7 +36,7 @@ export default function TestimonialsSection() {
               </Text>
             </Box>
             <Heading size="7" align="center" mb="2">What Clients Say</Heading>
-            <Text as="p" color="gray" align="center" size="3" style={{ maxWidth: '700px' }}>
+            <Text as="p"  align="center" size="3" style={{ maxWidth: '700px' }}>
               Feedback from clients who have experienced my expertise in developing innovative solutions
             </Text>
           </Flex>
@@ -89,7 +89,7 @@ export default function TestimonialsSection() {
                   </Box>
                   <Box>
                     <Text weight="bold">John Doe</Text>
-                    <Text size="2" color="gray">CTO, Tech Innovations</Text>
+                    <Text size="2" >CTO, Tech Innovations</Text>
                   </Box>
                 </Flex>
               </Box>
@@ -143,7 +143,7 @@ export default function TestimonialsSection() {
                   </Box>
                   <Box>
                     <Text weight="bold">Sarah Johnson</Text>
-                    <Text size="2" color="gray">Product Manager, DataFlow Inc.</Text>
+                    <Text size="2" >Product Manager, DataFlow Inc.</Text>
                   </Box>
                 </Flex>
               </Box>
