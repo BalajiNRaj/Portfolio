@@ -8,8 +8,9 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { ThemeToggle } from "./ThemeToggle";
 
-const MotionFlex = motion(Flex);
-const MotionBox = motion(Box);
+// Motion components using the new motion.create() API
+const MotionFlex = motion.create(Flex);
+const MotionBox = motion.create(Box);
 
 const AppBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,6 +25,7 @@ const AppBar = () => {
 
   // Handle scroll effects for transparent to solid transition
   useEffect(() => {
+    // Initialize with scrolled=false to avoid hydration mismatch
     const handleScroll = () => {
       if (window.scrollY > 10) {
         setScrolled(true);
@@ -31,6 +33,9 @@ const AppBar = () => {
         setScrolled(false);
       }
     };
+    
+    // Check initial scroll position
+    handleScroll();
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -96,6 +101,7 @@ const AppBar = () => {
                   src={"/favicon.png"} 
                   alt="Logo" 
                   fill
+                  sizes="40px"
                   style={{ 
                     objectFit: 'cover',
                     opacity: scrolled ? 1 : 0.95,

@@ -5,47 +5,65 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 type ThemeMode = 'light' | 'dark' | 'system';
 
 interface ThemeContextType {
-  theme: ThemeMode;
+  theme: ThemeMode | undefined;
   setTheme: (theme: ThemeMode) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<ThemeMode>('light');
+  // Start with undefined to avoid hydration mismatch
+  const [theme, setTheme] = useState<ThemeMode | undefined>(undefined);
   const [mounted, setMounted] = useState(false);
 
-  // Update theme
+  // Update theme - Only run on client side after hydration
   const updateTheme = (newTheme: ThemeMode) => {
-    // Save to localStorage
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('theme', newTheme);
+    // Only update DOM after component is mounted (client-side only)
+    if (!mounted) {
+      setTheme(newTheme);
+      return;
     }
+    
+    // Save to localStorage - client side only
+    localStorage.setItem('theme', newTheme);
     
     // Update state
     setTheme(newTheme);
     
-    // Apply theme to document
+    // Apply theme to document - client side only
     const root = document.documentElement;
     
     if (newTheme === 'system') {
       const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       root.setAttribute('data-theme', systemTheme);
       document.querySelector('html')?.setAttribute('style', `color-scheme: ${systemTheme}`);
+      
+      // Set attribute for Radix themes
+      const radixThemes = document.querySelectorAll('.radix-themes');
+      radixThemes.forEach(themeEl => {
+        (themeEl as HTMLElement).setAttribute('data-radix-theme-mode', systemTheme);
+      });
     } else {
       root.setAttribute('data-theme', newTheme);
       document.querySelector('html')?.setAttribute('style', `color-scheme: ${newTheme}`);
+      
+      // Set attribute for Radix themes
+      const radixThemes = document.querySelectorAll('.radix-themes');
+      radixThemes.forEach(themeEl => {
+        (themeEl as HTMLElement).setAttribute('data-radix-theme-mode', newTheme);
+      });
     }
   };
 
   // Initialize theme from localStorage or system preference
   useEffect(() => {
+    // Only run on client side
     setMounted(true);
     
     // Get saved theme from localStorage
-    const savedTheme = typeof window !== 'undefined' ? localStorage.getItem('theme') as ThemeMode : null;
+    const savedTheme = localStorage.getItem('theme') as ThemeMode | null;
     
-    if (savedTheme) {
+    if (savedTheme && ['light', 'dark', 'system'].includes(savedTheme)) {
       updateTheme(savedTheme);
     } else {
       // Default to system
@@ -63,10 +81,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);
-  }, [theme]);
+  }, [mounted]); // Only depends on mounted, not theme
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme: updateTheme }}>
+    <ThemeContext.Provider value={{ theme: theme || 'system', setTheme: updateTheme }}>
       {mounted ? children : <div style={{ visibility: 'hidden' }}>{children}</div>}
     </ThemeContext.Provider>
   );

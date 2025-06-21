@@ -7,12 +7,12 @@ import { motion } from 'framer-motion';
 import ProjectLinks from "../common/ProjectLinks";
 import { getFeaturedProjects, Project } from '@/data/projects';
 
-// Motion components
-const MotionBox = motion(Box);
-const MotionHeading = motion(Heading);
-const MotionText = motion(Text);
-const MotionFlex = motion(Flex);
-const MotionCard = motion(Card);
+// Motion components using the new motion.create() API
+const MotionBox = motion.create(Box);
+const MotionHeading = motion.create(Heading);
+const MotionText = motion.create(Text);
+const MotionFlex = motion.create(Flex);
+const MotionCard = motion.create(Card);
 
 export default function ProjectsSection() {
   // Project data

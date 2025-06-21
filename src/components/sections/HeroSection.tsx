@@ -14,14 +14,17 @@ import {
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import styles from "../../app/animations.module.css";
+import ClientOnly from "../ClientOnly";
 
 export default function HeroSection() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const profileRef = useRef<HTMLDivElement>(null);
+  const [currentYear, setCurrentYear] = useState<number | null>(null);
 
   useEffect(() => {
     setIsLoaded(true);
+    setCurrentYear(new Date().getFullYear());
 
     const handleMouseMove = (e: MouseEvent) => {
       // Skip 3D effect calculation on mobile devices for better performance
@@ -148,12 +151,12 @@ export default function HeroSection() {
                 wrap="wrap"
                 direction={{ initial: "column", sm: "row" }}
               >
-                <Button size="4" variant="solid" highContrast asChild>
+                <Button size="4" variant="solid" highContrast asChild className="hire-me-button">
                   <Link href="#contact">
-                    <Box as="span" mr="2">
+                    <Box as="span" mr="2" style={{ display: 'flex', alignItems: 'center' }}>
                       <svg
-                        width="24"
-                        height="24"
+                        width="20"
+                        height="20"
                         viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -168,12 +171,12 @@ export default function HeroSection() {
                   </Link>
                 </Button>
 
-                <Button size="4" variant="outline" asChild>
+                <Button size="4" variant="outline" asChild className="download-cv-button">
                   <Link href="/Balaji Nagarajan.pdf" target="_blank">
-                    <Box as="span" mr="2">
+                    <Box as="span" mr="2" style={{ display: 'flex', alignItems: 'center' }}>
                       <svg
-                        width="24"
-                        height="24"
+                        width="20"
+                        height="20"
                         viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -206,32 +209,33 @@ export default function HeroSection() {
                     align="center"
                     position="relative"
                     p="2"
-                  >
-                    <Box
-                      position="absolute"
-                      top="-10px"
-                      style={{
-                        whiteSpace: "nowrap",
-                      }}
-                      className="radix-themes-custom-fonts"
-                    >
-                      <Badge size="1" color="violet" radius="full">
-                        Since 2019
-                      </Badge>
-                    </Box>
-                    <Text
-                      size="6"
-                      weight="bold"
-                      color="violet"
-                      style={{
-                        position: "relative",
-                        display: "inline-block",
-                      }}
-                    >
-                      <span>{new Date().getFullYear() - 2019}+</span>
-                      <Box
+                  >                      <Box
                         position="absolute"
+                        top="-10px"
                         style={{
+                          whiteSpace: "nowrap",
+                        }}
+                        className="radix-themes-custom-fonts"
+                      >
+                        <Badge size="1" color="violet" radius="full">
+                          Since 2019
+                        </Badge>
+                      </Box>
+                      <Text
+                        size="6"
+                        weight="bold"
+                        color="violet"
+                        style={{
+                          position: "relative",
+                          display: "inline-block",
+                        }}
+                      >
+                        <ClientOnly>
+                          <span>{currentYear ? currentYear - 2019 : ''}+</span>
+                        </ClientOnly>
+                        <Box
+                          position="absolute"
+                          style={{
                           bottom: 0,
                           left: 0,
                           width: "100%",

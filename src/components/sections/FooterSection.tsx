@@ -4,14 +4,23 @@ import { Box, Container, Grid, Flex, Heading, Text, Button, Link, Dialog, TextFi
 import { EnvelopeClosedIcon, HomeIcon, MobileIcon, GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
+import ClientOnly from "../ClientOnly";
 
-// Motion components
-const MotionBox = motion(Box);
-const MotionHeading = motion(Heading);
-const MotionText = motion(Text);
-const MotionFlex = motion(Flex);
+// Motion components using the new motion.create() API
+const MotionBox = motion.create(Box);
+const MotionHeading = motion.create(Heading);
+const MotionText = motion.create(Text);
+const MotionFlex = motion.create(Flex);
 
 export default function FooterSection() {
+  const [currentYear, setCurrentYear] = useState<number | null>(null);
+  
+  useEffect(() => {
+    // Set year on client side to avoid hydration mismatch
+    setCurrentYear(new Date().getFullYear());
+  }, []);
+  
   // Animation variants
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -316,7 +325,7 @@ export default function FooterSection() {
             gap={{ initial: '4', sm: '0' }}
           >
             <Text size="2" >
-              © {new Date().getFullYear()} Balaji Nagarajan. All rights reserved.
+              © <ClientOnly>{currentYear || ''}</ClientOnly> Balaji Nagarajan. All rights reserved.
             </Text>
             <Text size="2" >
               Designed and built with passion

@@ -5,12 +5,12 @@ import { StarFilledIcon, RocketIcon, CodeIcon, GearIcon, MagicWandIcon } from '@
 import { motion } from 'framer-motion';
 import React from 'react';
 
-// Motion components
-const MotionBox = motion(Box);
-const MotionHeading = motion(Heading);
-const MotionText = motion(Text);
-const MotionCard = motion(Card);
-const MotionFlex = motion(Flex);
+// Motion components using the new motion.create() API
+const MotionBox = motion.create(Box);
+const MotionHeading = motion.create(Heading);
+const MotionText = motion.create(Text);
+const MotionCard = motion.create(Card);
+const MotionFlex = motion.create(Flex);
 
 // Define types for the component props
 export type BadgeColor = "ruby" | "blue" | "brown" | "crimson" | "cyan" | "gold" | "gray" | "green" | 
