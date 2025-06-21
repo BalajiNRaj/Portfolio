@@ -168,7 +168,7 @@ const AppBar = () => {
               );
             })}
             <Flex gap="3" align="center">
-              {/* <Box style={{
+              <Box style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -176,7 +176,7 @@ const AppBar = () => {
                 height: '36px',
               }}>
                 <ThemeToggle />
-              </Box> */}
+              </Box> 
               <Button 
                 variant="ghost" 
                 size="2" 
