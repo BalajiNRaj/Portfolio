@@ -18,7 +18,6 @@ const AppBar = () => {
 
   const navItems = [
     { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
     { label: "Experience", href: "/experience" },
     { label: "Projects", href: "/projects" },
   ];
@@ -55,7 +54,6 @@ const AppBar = () => {
       left="0"
       right="0"
       style={{
-        backgroundColor: scrolled ? 'var(--slate-1)' : 'rgba(var(--slate-1-rgb), 0.85)',
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
         boxShadow: scrolled ? 'var(--shadow-blur)' : 'none',
@@ -170,7 +168,7 @@ const AppBar = () => {
               );
             })}
             <Flex gap="3" align="center">
-              <Box style={{
+              {/* <Box style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -178,7 +176,7 @@ const AppBar = () => {
                 height: '36px',
               }}>
                 <ThemeToggle />
-              </Box>
+              </Box> */}
               <Button 
                 variant="ghost" 
                 size="2" 

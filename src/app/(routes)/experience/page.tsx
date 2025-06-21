@@ -27,11 +27,15 @@ import {
   CheckIcon,
   GlobeIcon,
   FileIcon,
+  PersonIcon,
+  HeartFilledIcon,
+  PaperPlaneIcon,
 } from "@radix-ui/react-icons";
 import styles from "@/app/animations.module.css";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useState, useRef, useEffect, useMemo } from "react";
 import Image from "next/image";
+import { skillsData, expertiseAreas } from '@/data/skills';
 
 interface Experience {
   title: string;
@@ -48,13 +52,6 @@ interface SkillCategory {
   skills: string[];
 }
 
-interface Project {
-  title: string;
-  description: string;
-  technologies: string[];
-  highlights: string[];
-}
-
 export default function ExperiencePage() {
   const { theme } = useTheme();
   const [activeTab, setActiveTab] = useState("timeline");
@@ -63,7 +60,9 @@ export default function ExperiencePage() {
     timeline: false,
     skills: false,
     achievements: false,
-    projects: false,
+    expertise: false,
+    education: false,
+    awards: false,
   });
 
   // Create refs outside of useMemo
@@ -71,7 +70,9 @@ export default function ExperiencePage() {
   const timelineRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
   const achievementsRef = useRef<HTMLDivElement>(null);
-  const projectsRef = useRef<HTMLDivElement>(null);
+  const expertiseRef = useRef<HTMLDivElement>(null);
+  const educationRef = useRef<HTMLDivElement>(null);
+  const awardsRef = useRef<HTMLDivElement>(null);
   
   // Store refs in a object for easier access
   const sectionRefs = useMemo(() => ({
@@ -79,7 +80,9 @@ export default function ExperiencePage() {
     timeline: timelineRef,
     skills: skillsRef,
     achievements: achievementsRef,
-    projects: projectsRef,
+    expertise: expertiseRef,
+    education: educationRef,
+    awards: awardsRef,
   }), []);
 
   useEffect(() => {
@@ -114,7 +117,7 @@ export default function ExperiencePage() {
       title: "Technical Lead",
       company: "Responsive (formerly RFPIO)",
       location: "Coimbatore, Tamil Nadu",
-      period: "Mar 2023 - Present",
+      period: "Mar 2023 - Jun 2025",
       highlights: [
         "Led AI-driven development, improving security profiles and automation",
         "Optimized development workflows, boosting efficiency by 30%",
@@ -211,62 +214,11 @@ export default function ExperiencePage() {
     },
   ];
 
-  const skillCategories: SkillCategory[] = [
-    {
-      name: "Backend Development",
-      skills: [
-        "Java",
-        "Spring Boot",
-        "Python",
-        "C#",
-        "REST APIs",
-        "Microservices",
-      ],
-    },
-    {
-      name: "Frontend Development",
-      skills: [
-        "React",
-        "React Hooks",
-        "Next.js",
-        "AngularJS",
-        "TypeScript",
-        "JavaScript",
-        "HTML/CSS",
-      ],
-    },
-    {
-      name: "AI & Machine Learning",
-      skills: [
-        "OpenAI",
-        "Claude",
-        "Amazon Bedrock",
-        "LLMs",
-        "LangChain",
-        "Vector Search",
-        "RAG",
-      ],
-    },
-    {
-      name: "Databases & Storage",
-      skills: ["MongoDB", "SQL", "SOLR", "Redis", "NGinx"],
-    },
-    {
-      name: "DevOps & Cloud",
-      skills: ["Git", "Jenkins", "AWS Lambda", "Cloud Computing"],
-    },
-    {
-      name: "Tools & Methodologies",
-      skills: [
-        "JIRA",
-        "Confluence",
-        "MongoDB Compass",
-        "MySQL Workbench",
-        "DBEaver",
-        "Agile/Scrum",
-      ],
-    },
-  ];
+  // Generate skill categories from our central skills data
+  const skillCategories = skillsData.map(category => ({
+    name: category.title.replace(/^[^a-zA-Z]+\s/, ''), // Remove emoji prefix
+    skills: category.skills.map(skill => skill.name)
+  }));
 
   const achievements = [
     {
@@ -306,94 +258,6 @@ export default function ExperiencePage() {
     },
   ];
 
-  const projects: Project[] = [
-    {
-      title: "Profile Center (Trust Center Solution & Automation)",
-      description:
-        "A comprehensive Trust Center solution with AI-driven automation for enhanced security transparency.",
-      technologies: [
-        "AI Agents",
-        "React",
-        "MongoDB",
-        "Java",
-        "Spring Boot",
-        "LLMs",
-        "Docusign",
-        "Salesforce",
-        "Microsoft Dynamics",
-        "Slack",
-      ],
-      highlights: [
-        "Engineered AI Agents to dynamically create customized Trust Centers based on user needs",
-        "Developed a dynamic summary and AI-driven evaluation agent that optimizes Trust Center content using visitor engagement data",
-        "Implemented custom domain setup with domain validation and CNAME mapping",
-        "Integrated the Trust Center with Docusign, Salesforce, Microsoft Dynamics, and Slack for seamless collaboration",
-      ],
-    },
-    {
-      title: "Research & Development (Trailblazer Award Winning Feature)",
-      description:
-        "Advanced search and recommendation system using AI and vector search technologies.",
-      technologies: [
-        "SOLR",
-        "Dense Vector Search",
-        "Ada Model",
-        "RAG",
-        "OpenAI",
-        "Slack",
-        "Google Drive API",
-        "Bing Search API",
-      ],
-      highlights: [
-        "Enhanced product recommendation engine with SOLR's Dense Vector Search, Ada Model, RAG, and OpenAI",
-        "Developed real-time Slack Slash commands for enterprise knowledge search",
-        "Integrated Google Drive and Bing Search APIs for advanced data availability",
-      ],
-    },
-    {
-      title: "Import Automation (Custom Delight Award-Winning Feature)",
-      description:
-        "Machine learning-based file processing system for automated document imports.",
-      technologies: ["Machine Learning", "Java", "TypeScript", "MongoDB"],
-      highlights: [
-        "Created a machine learning-based file processing system",
-        "Reduced manual efforts by 60%",
-        "Improved document import accuracy and efficiency",
-      ],
-    },
-    {
-      title: "External API Development",
-      description: "Secure and scalable APIs with comprehensive documentation.",
-      technologies: [
-        "JWT Authentication",
-        "Swagger",
-        "Spring Boot",
-        "REST APIs",
-      ],
-      highlights: [
-        "Designed secure and scalable APIs with JWT authentication",
-        "Created comprehensive API documentation with Swagger",
-      ],
-    },
-    {
-      title: "Microsoft Office Add-in",
-      description: "Integration of content library into Microsoft PowerPoint.",
-      technologies: ["VSTO", "XML", "Microsoft Office API"],
-      highlights: [
-        "Integrated content library into Microsoft PowerPoint using VSTO and XML",
-      ],
-    },
-    {
-      title: "Electronic Signature Feature",
-      description:
-        "Product native E-Sign functionality for digital document signing.",
-      technologies: ["Digital Signatures", "React", "Java"],
-      highlights: [
-        "Implemented product native E-Sign functionality for digital document signing",
-      ],
-    },
-  ];
-
   return (
     <main>
       {/* Hero Section */}
@@ -406,6 +270,7 @@ export default function ExperiencePage() {
           background: "var(--gradient-background)",
           position: "relative",
           overflow: "hidden",
+          paddingTop: "calc(var(--header-height) + 2rem)", /* Added padding to prevent content from hiding under AppBar */
         }}
       >
         {/* Background elements */}
@@ -696,9 +561,9 @@ export default function ExperiencePage() {
             }`}
           >
             <Tabs.Trigger value="timeline">Timeline</Tabs.Trigger>
+            <Tabs.Trigger value="expertise">Expertise</Tabs.Trigger>
             <Tabs.Trigger value="skills">Skills & Expertise</Tabs.Trigger>
             <Tabs.Trigger value="achievements">Achievements</Tabs.Trigger>
-            <Tabs.Trigger value="projects">Key Projects</Tabs.Trigger>
           </Tabs.List>
 
           {/* Timeline Content */}
@@ -960,119 +825,310 @@ export default function ExperiencePage() {
             </Box>
           </Tabs.Content>
 
-          {/* Projects Content */}
-          <Tabs.Content value="projects">
+          {/* Expertise Content */}
+          <Tabs.Content value="expertise">
             <Box
-              id="projects"
-              ref={sectionRefs.achievements}
-              className={`${styles.fadeIn} ${
-                isInView.achievements ? styles.visible : ""
-              }`}
+              id="expertise"
+              ref={sectionRefs.expertise}
+              className={`${styles.fadeIn} ${isInView.expertise ? styles.visible : ''}`}
             >
-              <Grid columns={{ initial: "1", md: "2" }} gap="6">
-                {projects.map((project, index) => (
-                  <Card
-                    key={index}
-                    style={{
-                      background: "var(--glass-background)",
-                      backdropFilter: "blur(10px)",
-                      border: "1px solid var(--glass-border)",
-                      borderRadius: "16px",
-                      boxShadow:
-                        theme === "dark"
-                          ? "0 4px 30px rgba(0, 0, 0, 0.15)"
-                          : "var(--shadow-5)",
-                    }}
-                    className={`${styles.fadeInUp} ${
-                      styles[`delay${(index % 3) + 1}`]
-                    } ${isInView.achievements ? styles.visible : ""}`}
-                  >
-                    <Flex direction="column" gap="4" p="5">
-                      <Flex gap="3" align="start">
-                        <Box
-                          style={{
-                            width: "48px",
-                            height: "48px",
-                            borderRadius: "12px",
-                            background:
-                              index % 4 === 0
-                                ? "var(--blue-4)"
-                                : index % 4 === 1
-                                ? "var(--purple-4)"
-                                : index % 4 === 2
-                                ? "var(--green-4)"
-                                : "var(--blue-4)",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            flexShrink: 0,
-                          }}
-                        >
-                          <StarFilledIcon
-                            width="24"
-                            height="24"
-                            color={
-                              index % 4 === 0
-                                ? "var(--blue-11)"
-                                : index % 4 === 1
-                                ? "var(--purple-11)"
-                                : index % 4 === 2
-                                ? "var(--green-11)"
-                                : "var(--blue-11)"
-                            }
-                          />
-                        </Box>
-                        <Box>
-                          <Heading size="4" mt="1">
-                            {project.title}
-                          </Heading>
-                          <Text
-                            size="2"
-                            style={{ color: "var(--card-text-secondary)" }}
+              <Card 
+                style={{ 
+                  background: 'var(--glass-background)', 
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid var(--glass-border)',
+                  borderRadius: '16px',
+                  boxShadow: theme === 'dark' ? '0 4px 30px rgba(0, 0, 0, 0.15)' : 'var(--shadow-5)',
+                }}
+              >
+                <ScrollArea 
+                  type="hover" 
+                  scrollbars="vertical" 
+                  style={{ height: 'auto', maxHeight: '400px' }}
+                >
+                  <Box p="5">
+                    <Grid columns={{ initial: "1", sm: "2" }} gap="5">
+                      <Box>
+                        <Flex gap="3" align="center" mb="3">
+                          <Box 
+                            style={{
+                              width: '40px',
+                              height: '40px',
+                              borderRadius: '8px',
+                              background: 'var(--blue-4)',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                            }}
                           >
-                            {project.description}
-                          </Text>
-                        </Box>
-                      </Flex>
-
-                      <Separator size="4" />
-
-                      <Flex wrap="wrap" gap="2">
-                        {project.technologies.map((tech, i) => (
-                          <Badge
-                            key={i}
-                            size="1"
-                            variant="soft"
-                            color={
-                              index % 3 === 0
-                                ? "blue"
-                                : index % 3 === 1
-                                ? "purple"
-                                : "green"
-                            }
-                            className="skill-badge"
+                            <CodeIcon width="20" height="20" color="var(--blue-11)" />
+                          </Box>
+                          <Heading size="3">Full Stack Development</Heading>
+                        </Flex>
+                        <Text size="2" style={{ color: 'var(--slate-11)', lineHeight: '1.7' }}>
+                          Architecting and developing scalable enterprise applications with modern cloud-native technologies and microservices. Expertise in Java, Spring Boot, React, and Node.js for building robust, high-performance systems.
+                        </Text>
+                      </Box>
+                      
+                      <Box>
+                        <Flex gap="3" align="center" mb="3">
+                          <Box 
+                            style={{
+                              width: '40px',
+                              height: '40px',
+                              borderRadius: '8px',
+                              background: 'var(--purple-4)',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                            }}
                           >
-                            {tech}
-                          </Badge>
-                        ))}
-                      </Flex>
-
-                      <Text
-                        size="2"
-                        style={{
-                          color: "var(--card-text-secondary)",
-                          lineHeight: "1.6",
-                        }}
-                      >
-                        {project.highlights.join(" • ")}
-                      </Text>
-                    </Flex>
-                  </Card>
-                ))}
-              </Grid>
+                            <RocketIcon width="20" height="20" color="var(--purple-11)" />
+                          </Box>
+                          <Heading size="3">AI Integration</Heading>
+                        </Flex>
+                        <Text size="2" style={{ color: 'var(--slate-11)', lineHeight: '1.7' }}>
+                          Building advanced AI solutions using LLMs, RAG architecture, and custom ML models for enterprise automation and intelligence. Creating context-aware search and recommendation systems.
+                        </Text>
+                      </Box>
+                      
+                      <Box>
+                        <Flex gap="3" align="center" mb="3">
+                          <Box 
+                            style={{
+                              width: '40px',
+                              height: '40px',
+                              borderRadius: '8px',
+                              background: 'var(--green-4)',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                            }}
+                          >
+                            <PersonIcon width="20" height="20" color="var(--green-11)" />
+                          </Box>
+                          <Heading size="3">Technical Leadership</Heading>
+                        </Flex>
+                        <Text size="2" style={{ color: 'var(--slate-11)', lineHeight: '1.7' }}>
+                          Mentoring teams, driving architectural decisions, and implementing best practices for scalable enterprise solutions. Translating business requirements into technical specifications.
+                        </Text>
+                      </Box>
+                      
+                      <Box>
+                        <Flex gap="3" align="center" mb="3">
+                          <Box 
+                            style={{
+                              width: '40px',
+                              height: '40px',
+                              borderRadius: '8px',
+                              background: 'var(--orange-4)',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                            }}
+                          >
+                            <LightningBoltIcon width="20" height="20" color="var(--orange-11)" />
+                          </Box>
+                          <Heading size="3">Performance Optimization</Heading>
+                        </Flex>
+                        <Text size="2" style={{ color: 'var(--slate-11)', lineHeight: '1.7' }}>
+                          Identifying and resolving performance bottlenecks in enterprise applications, optimizing database queries, and implementing caching strategies for improved response times.
+                        </Text>
+                      </Box>
+                    </Grid>
+                  </Box>
+                </ScrollArea>
+              </Card>
             </Box>
           </Tabs.Content>
         </Tabs.Root>
+
+        {/* Academic Background and Recognition & Awards Section */}
+        <Box py={{ initial: "7", sm: "8" }}>
+          <Grid 
+            columns={{ initial: "1", sm: "2" }} 
+            gap={{ initial: "5", sm: "6" }}
+          >
+            <Flex direction="column" gap="4" className={`${styles.fadeInLeft} ${isInView.education ? styles.visible : ''}`}>
+              <Badge size="2" color="blue" mb="1">EDUCATION</Badge>
+              <Heading 
+                size={{ initial: "6", sm: "7" }}
+                mb="3"
+                className="gradient-text"
+                id="education"
+                ref={sectionRefs.education}
+              >
+                Academic Background
+              </Heading>
+              
+              <Card 
+                style={{ 
+                  background: 'var(--glass-background)', 
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid var(--glass-border)',
+                  borderRadius: '16px',
+                }}
+              >
+                <Flex direction="column" gap="4" p="5">
+                  <Flex gap="3" align="start">
+                    <Box 
+                      style={{
+                        width: '48px',
+                        height: '48px',
+                        borderRadius: '12px',
+                        background: 'var(--blue-4)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                      }}
+                    >
+                      <FileIcon width="24" height="24" color="var(--blue-11)" />
+                    </Box>
+                    <Box>
+                      <Badge size="1" variant="soft" color="blue">2015-2019</Badge>
+                      <Heading size="4" mt="1">B.Tech, Information Technology</Heading>
+                      <Text size="3" color="gray">Sri Ramakrishna Engineering College</Text>
+                      <Text size="3" color="gray">Coimbatore, Tamil Nadu</Text>
+                      <Badge mt="2">CGPA: 8.06</Badge>
+                    </Box>
+                  </Flex>
+                  
+                  <Separator size="4" />
+                  
+                  <Flex gap="3" align="start">
+                    <Box 
+                      style={{
+                        width: '48px',
+                        height: '48px',
+                        borderRadius: '12px',
+                        background: 'var(--purple-4)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                      }}
+                    >
+                      <MagicWandIcon width="24" height="24" color="var(--purple-11)" />
+                    </Box>
+                    <Box>
+                      <Badge size="1" variant="soft" color="purple">Ongoing</Badge>
+                      <Heading size="4" mt="1">Professional Certifications</Heading>
+                      <Flex direction="column" gap="2" mt="2">
+                        <Text size="3">• AWS Certified Solutions Architect</Text>
+                        <Text size="3">• Microsoft Certified: Azure AI Engineer</Text>
+                        <Text size="3">• Java SE 11 Developer Certification</Text>
+                      </Flex>
+                    </Box>
+                  </Flex>
+                </Flex>
+              </Card>
+            </Flex>
+            
+            <Flex direction="column" gap="4" className={`${styles.fadeInRight} ${isInView.awards ? styles.visible : ''}`}>
+              <Badge size="2" color="purple" mb="1">ACHIEVEMENTS</Badge>
+              <Heading 
+                size={{ initial: "6", sm: "7" }}
+                mb="3"
+                className="gradient-text"
+                id="awards"
+                ref={sectionRefs.awards}
+              >
+                Recognition & Awards
+              </Heading>
+              
+              <Card 
+                style={{ 
+                  background: 'var(--glass-background)', 
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid var(--glass-border)',
+                  borderRadius: '16px',
+                }}
+              >
+                <Flex direction="column" gap="4" p="5">
+                  <Flex gap="3" align="start">
+                    <Box 
+                      style={{
+                        width: '48px',
+                        height: '48px',
+                        borderRadius: '12px',
+                        background: 'var(--blue-4)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                      }}
+                    >
+                      <StarFilledIcon width="24" height="24" color="var(--blue-11)" />
+                    </Box>
+                    <Box>
+                      <Badge size="1" variant="soft" color="blue">2024</Badge>
+                      <Heading size="4" mt="1">Game Changer Award</Heading>
+                      <Text size="3" color="gray">Thomson Reuters</Text>
+                      <Text size="3" mt="2">
+                        Recognized for innovation in implementing AI technologies in the Trust Center platform, significantly improving search accuracy and user experience.
+                      </Text>
+                    </Box>
+                  </Flex>
+                  
+                  <Separator size="4" />
+                  
+                  <Flex gap="3" align="start">
+                    <Box 
+                      style={{
+                        width: '48px',
+                        height: '48px',
+                        borderRadius: '12px',
+                        background: 'var(--purple-4)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                      }}
+                    >
+                      <HeartFilledIcon width="24" height="24" color="var(--purple-11)" />
+                    </Box>
+                    <Box>
+                      <Badge size="1" variant="soft" color="purple">2023</Badge>
+                      <Heading size="4" mt="1">Best Team Award</Heading>
+                      <Text size="3" color="gray">Trust Center Project</Text>
+                      <Text size="3" mt="2">
+                        Led the development team that received recognition for exceptional collaboration and delivery of critical features ahead of schedule.
+                      </Text>
+                    </Box>
+                  </Flex>
+                  
+                  <Separator size="4" />
+                  
+                  <Flex gap="3" align="start">
+                    <Box 
+                      style={{
+                        width: '48px',
+                        height: '48px',
+                        borderRadius: '12px',
+                        background: 'var(--orange-4)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                      }}
+                    >
+                      <PaperPlaneIcon width="24" height="24" color="var(--orange-11)" />
+                    </Box>
+                    <Box>
+                      <Badge size="1" variant="soft" color="orange">2021</Badge>
+                      <Heading size="4" mt="1">Customer Delight Award</Heading>
+                      <Text size="3" color="gray">IBM</Text>
+                      <Text size="3" mt="2">
+                        Awarded for exceptional client satisfaction after delivering a complex financial application with improved performance metrics and user experience.
+                      </Text>
+                    </Box>
+                  </Flex>
+                </Flex>
+              </Card>
+            </Flex>
+          </Grid>
+        </Box>
       </Container>
 
       <style jsx global>{`

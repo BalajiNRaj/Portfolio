@@ -4,6 +4,8 @@ import { Box, Container, Flex, Heading, Text, Grid, Button, Link, Card, Badge } 
 import { ArrowRightIcon, GitHubLogoIcon, ExternalLinkIcon } from '@radix-ui/react-icons';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import ProjectLinks from "../common/ProjectLinks";
+import { getFeaturedProjects, Project } from '@/data/projects';
 
 // Motion components
 const MotionBox = motion(Box);
@@ -12,47 +14,9 @@ const MotionText = motion(Text);
 const MotionFlex = motion(Flex);
 const MotionCard = motion(Card);
 
-interface Project {
-  title: string;
-  description: string;
-  image: string;
-  imageAlt: string;
-  technologies: string[];
-  githubUrl: string;
-  demoUrl: string;
-}
-
 export default function ProjectsSection() {
   // Project data
-  const projects: Project[] = [
-    {
-      title: "AI-Powered Answer Agent",
-      description: "Automated system using RAG and OpenAI's Ada model for intelligent response generation with Microsoft recognition.",
-      image: "/window.svg",
-      imageAlt: "AI-Powered Answer Agent",
-      technologies: ["OpenAI", "SOLR", "RAG", "ML"],
-      githubUrl: "https://github.com/BalajiNRaj/project1",
-      demoUrl: "https://project1-demo.com"
-    },
-    {
-      title: "Profile Center (Trust Center)",
-      description: "AI-powered security profiles with anonymous viewer tracking, Salesforce/Slack integration, and ChatGPT features.",
-      image: "/file.svg",
-      imageAlt: "Profile Center (Trust Center)",
-      technologies: ["OpenAI", "Spring Boot", "Slack", "Salesforce"],
-      githubUrl: "https://github.com/BalajiNRaj/project2",
-      demoUrl: "https://project2-demo.com"
-    },
-    {
-      title: "Agent Studio Platform",
-      description: "Multiple AI-driven agents including Dynamic Report Agent, Executive Summary Agent, and Analysis Agent.",
-      image: "/globe.svg",
-      imageAlt: "Agent Studio Platform",
-      technologies: ["AI/ML", "Analytics", "Automation", "React"],
-      githubUrl: "https://github.com/BalajiNRaj/project3",
-      demoUrl: "https://project3-demo.com"
-    }
-  ];
+  const projects: Project[] = getFeaturedProjects();
 
   // Animation variants
   const fadeIn = {
@@ -184,19 +148,32 @@ export default function ProjectsSection() {
                     justifyContent: 'center',
                   }}
                 >
-                  <Image
-                    src={project.image}
-                    alt={project.imageAlt}
-                    width={120}
-                    height={120}
-                    style={{ 
-                      opacity: 0.8,
-                      filter: 'drop-shadow(0 8px 24px rgba(0, 0, 0, 0.1))',
-                      transition: 'all 0.5s ease',
-                    }}
-                    className="project-image"
-                    priority={index < 2}
-                  />
+                  {project.emoji ? (
+                    <Text 
+                      size="9" 
+                      style={{ 
+                        fontSize: '5rem', 
+                        filter: 'drop-shadow(0 8px 24px rgba(0, 0, 0, 0.1))',
+                        transition: 'all 0.5s ease',
+                      }}
+                    >
+                      {project.emoji}
+                    </Text>
+                  ) : (
+                    <Image
+                      src={project.image || "/window.svg"}
+                      alt={project.imageAlt || project.title}
+                      width={120}
+                      height={120}
+                      style={{ 
+                        opacity: 0.8,
+                        filter: 'drop-shadow(0 8px 24px rgba(0, 0, 0, 0.1))',
+                        transition: 'all 0.5s ease',
+                      }}
+                      className="project-image"
+                      priority={index < 2}
+                    />
+                  )}
                 </Box>
                 
                 <Box p="5">
@@ -216,41 +193,13 @@ export default function ProjectsSection() {
                     ))}
                   </Flex>
                   
-                  <Flex gap="3">
-                    <Link 
-                      href={project.demoUrl} 
-                      target="_blank"
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '6px',
-                        color: 'var(--blue-9)',
-                        fontSize: '14px',
-                        fontWeight: 500,
-                      }}
-                      className="project-link"
-                    >
-                      View Project
-                      <ExternalLinkIcon width="14" height="14" />
-                    </Link>
-                    
-                    <Link 
-                      href={project.githubUrl} 
-                      target="_blank"
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '6px',
-                        color: 'var(--slate-11)',
-                        fontSize: '14px',
-                        fontWeight: 500,
-                      }}
-                      className="project-link"
-                    >
-                      Source Code
-                      <GitHubLogoIcon width="14" height="14" />
-                    </Link>
-                  </Flex>
+                  <ProjectLinks 
+                    githubUrl={project.githubUrl}
+                    demoUrl={project.demoUrl}
+                    isPrivate={project.isPrivate}
+                    size="1"
+                    variant="ghost"
+                  />
                 </Box>
               </MotionCard>
             ))}
