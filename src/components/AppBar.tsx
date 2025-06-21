@@ -68,7 +68,7 @@ const AppBar = () => {
         transition: 'all 0.4s ease'
       }}
     >
-      <Container size="4" style={{ height: '100%', padding: '0 16px' }}>
+      <Container size="4" style={{ height: '100%', padding: '0 var(--container-padding-mobile)' }}>
         <Flex py="3" justify="between" align="center" style={{ height: '100%' }}>
           <MotionFlex
             initial={{ opacity: 0, x: -20 }}

@@ -28,7 +28,7 @@ export default function RootLayout({
           <RadixThemeWrapper>
             <div className="min-h-screen text-text">
               <AppBar />
-              <main className="container mx-auto px-6 sm:px-8 md:px-10 pt-[calc(var(--header-height)+16px)] pb-8">
+              <main className="container mx-auto pt-[calc(var(--header-height)+16px)] pb-8">
                 {children}
               </main>
             </div>

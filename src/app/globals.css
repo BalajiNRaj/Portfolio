@@ -16,7 +16,7 @@
   /* Container */
   --container-max-width: 1200px;
   --container-padding: 24px;
-  --container-padding-mobile: 16px;
+  --container-padding-mobile: 24px;
 
   /* Breakpoints */
   --mobile: 640px;
@@ -256,13 +256,59 @@ body {
 [data-radix-container] {
   padding-left: var(--container-padding-mobile) !important;
   padding-right: var(--container-padding-mobile) !important;
+  max-width: calc(100% - 2 * var(--container-padding-mobile)) !important;
 }
 
 @media (min-width: 640px) {
   [data-radix-container] {
     padding-left: var(--container-padding) !important;
     padding-right: var(--container-padding) !important;
+    max-width: calc(100% - 2 * var(--container-padding)) !important;
   }
+}
+
+/* Ensure main content doesn't touch edges */
+main {
+  padding-left: var(--container-padding-mobile);
+  padding-right: var(--container-padding-mobile);
+}
+
+@media (min-width: 640px) {
+  main {
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+  }
+}
+
+/* Enhanced mobile section padding */
+section {
+  padding-left: var(--container-padding-mobile);
+  padding-right: var(--container-padding-mobile);
+}
+
+@media (min-width: 640px) {
+  section {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* Additional mobile padding for content */
+.section-container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 640px) {
+  .section-container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+/* Ensure content doesn't touch edges on small screens */
+[data-theme="dark"] .theme-body .radix-themes {
+  color-scheme: dark;
 }
 
 /* Simplified text animations - optimized for performance */
