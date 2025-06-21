@@ -581,7 +581,7 @@ export default function ExperiencePage() {
                     key={index}
                     experience={exp}
                     index={index}
-                    theme={theme}
+                    theme={theme || 'light'}
                     className={`${styles.fadeInUp} ${
                       styles[`delay${index + 1}`]
                     } ${isInView.timeline ? styles.visible : ""}`}

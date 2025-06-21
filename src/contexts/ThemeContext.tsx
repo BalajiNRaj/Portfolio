@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
 
 type ThemeMode = 'light' | 'dark' | 'system';
 
@@ -17,7 +17,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   // Update theme - Only run on client side after hydration
-  const updateTheme = (newTheme: ThemeMode) => {
+  const updateTheme = useCallback((newTheme: ThemeMode) => {
     // Only update DOM after component is mounted (client-side only)
     if (!mounted) {
       setTheme(newTheme);
@@ -53,7 +53,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         (themeEl as HTMLElement).setAttribute('data-radix-theme-mode', newTheme);
       });
     }
-  };
+  }, [mounted]);
 
   // Initialize theme from localStorage or system preference
   useEffect(() => {
@@ -81,7 +81,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);
-  }, [mounted]); // Only depends on mounted, not theme
+  }, [mounted, theme, updateTheme]); // Added missing dependencies
 
   return (
     <ThemeContext.Provider value={{ theme: theme || 'system', setTheme: updateTheme }}>
